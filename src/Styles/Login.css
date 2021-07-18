@@ -1,0 +1,108 @@
+*{
+   box-sizing: border-box;
+   margin:0;
+   padding: 0;
+}
+
+html{
+   font-size: 62.5%;
+   font-family: 'Montserrat', sans-serif;
+}
+
+main{
+   background-image: url(../Images/Login-Background.jpg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   display: flex;
+   height: 100vh;
+   width: 100vw;
+   justify-content: center;
+   align-items: center; 
+}
+
+.background{
+   background-image: url(../Images/Login-Img.png);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   border-radius: 7px;
+   box-shadow: 13px 16px 15px -3px rgba(0,0,0,0.75);
+   width: 1200px;
+   height: 80vh;
+   padding: 50px;
+}
+
+.main-container{
+   position:absolute;
+   left: 56vw;
+   bottom: 160px;
+}
+
+.login-box{
+   padding: 30px;
+   border-radius: 10px;
+   width: 400px;
+   box-shadow: 10px 13px 26px -3px rgba(0,0,0,0.75);
+}
+
+.btnLogin{
+   margin-top: 40px;
+   padding: 10px;
+   font-size: 1.5rem;
+   border-radius: 7px;
+   background-color: #F20746;
+   color: white;
+   border: 1px solid #F20746;
+   cursor: pointer;
+}
+
+.btnCancel{
+   margin-left: 25px;
+   padding: 10px;
+   font-size: 1.5rem;
+   border-radius: 7px;
+   background-color: #F20746;
+   color: white;
+   border: 1px solid #F20746;
+   cursor: pointer;
+}
+
+.btnClean{
+   position: relative;
+   top: 10px;
+   margin-bottom: 0px;
+   margin-left: 25px;
+   background-image: url(../Images/cleanIcon.png);
+   height: 30px;
+   width: 30px;
+   background-position: center;
+   background-size: cover;
+   border: none;
+   background-color: transparent;
+   cursor: pointer;
+}
+
+h1{
+   font-size: 5rem;
+   font-weight: 300;
+}
+
+h2{
+   font-size: 3rem;
+   font-weight: 200;
+   margin-top: 40px;
+   margin-bottom: 10px;
+}
+
+input{
+   height: 20px;
+   padding: 15px;
+   font-size: 1.5rem;
+   border-radius: 7px;
+   background-color: #FDFFFF;
+   border-style: none;
+}
+
+
+

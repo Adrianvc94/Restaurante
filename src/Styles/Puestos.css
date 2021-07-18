@@ -1,0 +1,264 @@
+*{
+   box-sizing: border-box;
+   margin:0;
+   padding: 0;
+}
+
+html{
+   font-size: 62.5%;
+   font-family: 'Montserrat', sans-serif;
+}
+
+body{
+   height: 100vh;
+   width: 100vw;
+   background-image: url(../Images/mainPageBackground.jpg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.root-container{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+
+}
+
+.parent-container{
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   flex-direction: column;
+   width: 77vw;
+   height: 82vh;
+   background-color: whitesmoke;
+   border-radius: 20px;
+   /* box-shadow: 13px 16px 15px -3px rgba(0,0,0,0.75); */
+   box-shadow: -3px 0px 20px -2px rgba(0,0,0,0.75);
+}
+
+.search-container{
+   display: flex;
+   justify-content: flex-start;
+   align-items: flex-start;
+   flex-direction: row;
+   margin: 30px auto 20px auto;
+   width: 1100px;
+}
+
+.search-buttons-container{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   flex-direction: row;
+   width: 160px;
+   height: 100%;
+}
+
+.btnrefresh, .btnclose, .btnclear, .btnsearch{
+   margin: 10px auto;
+   /* padding: 10px; */
+   height: 55px;
+   width: 55px;
+   text-align: center;
+   cursor: pointer;
+   background-color: white;
+   border-radius: 15px;
+   border: none;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+.btnrefresh{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnrefresh span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/refreshIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnclose{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnclose span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/closeIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnclear{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnclear span{
+   width: 35px;
+   height: 35px;
+   background-image: url('../Images/cleanIcon.png');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnsearch{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnsearch span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/searchIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnrefresh:hover, .btnclose:hover, .btnclear:hover, .btnsearch:hover{
+   background-color: #D9D9D9;
+   box-shadow: -3px 0px 20px -16px rgba(0,0,0,0.75);
+}
+
+.search-box{
+   width: 1000px;
+   height: 100%;
+   padding: 8px 0;
+   background-color: white;
+   border-radius: 10px;
+   margin: 0 20px 0 20px;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+form{
+   display: inline-block;
+   margin: 0 20px;
+}
+
+form label{
+   display: flex;
+   align-items: flex-end;
+}
+
+.search-box h2{
+   font-size: 1.5rem;
+   font-weight: 400;
+   line-height: 1.6;
+   margin: 10px auto;
+   width: 230px;
+}
+
+.search-box > h2{
+   font-size: 1.5rem;
+   line-height: 1.6;
+   font-weight: 500;
+   margin: 10px 0px 10px 16px;
+}
+
+.search-box input{
+   width: 150px;
+   height: 25px;
+   margin: 10px auto;
+   border:  none;
+   background-color: #F2F2F2;
+   border-radius: 5px;
+}
+
+.add-delete-buttons{
+   display: flex;
+   flex-direction: column;
+   margin-left: 7.5px;
+}
+
+.btnAdd, .btnDelete{
+   margin: 10px auto;
+   padding: 10px;
+   height: 55px;
+   width: 55px;
+   text-align: center;
+   cursor: pointer;
+   background-color: white;
+   border-radius: 15px;
+   border: none;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+.btnAdd:hover, .btnDelete:hover{
+   background-color: #D9D9D9;
+   box-shadow: -3px 0px 20px -16px rgba(0,0,0,0.75);
+}
+
+.btnAdd{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnAdd span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/addIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnDelete{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnDelete span:hover{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/deleteIconRed.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnDelete span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/deleteIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+
+.info-container{
+   width: 980px;
+}
+
+table{
+   border-collapse: collapse;
+   width: 100%;
+   background-color: white;
+}
+
+th, td{
+   border: 0.8px solid black;
+   text-align: left;
+   padding: 6px;
+   font-weight: 500;
+   font-size: 1.4rem;
+}

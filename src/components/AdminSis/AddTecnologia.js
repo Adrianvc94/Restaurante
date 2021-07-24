@@ -38,6 +38,7 @@ const AddTecnologia = () => {
 
    const limpiarInputs = () => {
       document.getElementById("form").reset();
+      document.getElementById("form2").reset();
    }
 
    const interfaz = () => {
@@ -92,7 +93,7 @@ const AddTecnologia = () => {
                      </div>
 
                      <div className="tecnologiaImage_addtecnologia">
-                        <form className="form_addtecnologia" action="">
+                        <form id="form2" className="form_addtecnologia" action="">
                            
                            <label for="descripcion">
                               <h2>Descripcion</h2>

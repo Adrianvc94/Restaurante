@@ -98,12 +98,15 @@ const Limpieza = () => {
                            <th>Restaurante</th>
                         </tr>
 
-                        <tr>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                           <td></td>
+                       
+                        {limpiezas.map(l => {
+                           return <tr>
+                           <td>{l._id}</td>
+                           <td>{l.nombre}</td>
+                           <td>{l.cantidad}</td>
+                           <td>{l.restaurante}</td>
                         </tr>
+                        })}
                      </table>
                   </div>
             

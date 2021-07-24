@@ -5,6 +5,7 @@ import '../../Styles/AddUsuario.css';
 const AddUsuarios = () => {
 
    const [usuario, setUsuario] = useState({
+      cedula:'',
       nombre:'',
       primer_apellido:'',
       segundo_apellido:'',
@@ -34,7 +35,7 @@ const AddUsuarios = () => {
          method:"POST",
          body: JSON.stringify(usuario)
       })
-      .then(response => response.json())
+      .then(response => console.log(response))
       .catch(error => console.log(error))
    }
 
@@ -61,6 +62,10 @@ const AddUsuarios = () => {
                         <h1 className="main-title_addusuario">Datos del Usuario</h1>
          
                         <form id="form" className="form_addusuario" action="">
+                           <label for="cedula">
+                              <h2>Cedula</h2>
+                              <input type="text" onChange={cambiarValor} name="cedula" id="cedula"/>
+                           </label> 
                            <label for="nombre">
                               <h2>Nombre</h2>
                               <input type="text" onChange={cambiarValor} name="nombre" id="nombre"/>
@@ -87,7 +92,7 @@ const AddUsuarios = () => {
                               <h2>Privilegios</h2>
                               <select name="privilegios" onChange={cambiarValor} name="privilegios" id="privilegios">
                                  <option value="sistema">Administrador del Sistema</option>
-                                 <option value="seguridad">Administrador del Sistema</option>
+                                 <option value="seguridad">Administrador de Seguridad</option>
                                  <option value="restaurante">Administrador del Restaurante</option>
                                  <option value="cuentas">Administrador de Cuentas</option>
                               </select>

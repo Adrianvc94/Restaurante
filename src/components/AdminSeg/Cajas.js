@@ -48,10 +48,10 @@ const Cajas = () => {
                            </label>         
                         </form>
                      </div>
-                     <div className="add-delete-buttons_cajas">
+                     {/* <div className="add-delete-buttons_cajas">
                         <Link to="/addcajas" className="btnAdd_cajas"><span></span></Link>
                         <button className="btnDelete_cajas"><span></span></button>
-                     </div>
+                     </div> */}
                   </div>
             
                   <div className="info-container_cajas"> 

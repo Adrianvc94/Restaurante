@@ -73,9 +73,9 @@ const Mesas = () => {
                               <h2>Restaurante</h2>
                               <input type="text" id="nacionalidadLicor"/>
                            </label>  
-                           <label for="nameRestaurante">
+                           <label for="cantidad_sillas">
                               <h2>Cantidad de Sillas</h2>
-                              <input type="text" id="nameRestaurante"/>
+                              <input type="text" id="cantidad_sillas"/>
                            </label>         
                         </form>
                      </div>

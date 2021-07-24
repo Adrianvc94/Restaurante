@@ -45,9 +45,9 @@ const Login = () => {
       console.log(role);
    }
 
-   // useEffect(() => {
-   //    traerDatosPuesto();
-   // }, [])
+   const limpiarInputs = () => {
+      document.getElementById("form").reset();
+   }
 
 
    const interfaz = () => {
@@ -62,7 +62,7 @@ const Login = () => {
                      <section class="login-box">
                         <h1>Login</h1>
       
-                        <form className="form-login" action="">
+                        <form id="form" className="form-login" action="">
                            <label for="user">
                               <h2>Usuario</h2>
                               <input type="text" onChange={cambiarValor} id="username" name="username" placeholder="Nombre de usuario"/>
@@ -74,8 +74,8 @@ const Login = () => {
                         </form>
       
                         <button class="btnLogin" onClick={enviarDatos}>Iniciar Sesion</button>
-                        <button class="btnCancel">Cancelar</button>
-                        <button class="btnClean"></button>
+                        <button class="btnCancel" onClick={limpiarInputs}>Cancelar</button>
+                        {/* <button class="btnClean"></button> */}
       
                      </section>
                   </section>

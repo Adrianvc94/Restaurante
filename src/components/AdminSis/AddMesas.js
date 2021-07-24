@@ -8,7 +8,7 @@ const AddMesas = () => {
    const [mesa, setMesa] = useState({
       nombre:'',
       numero:'',
-      sillas:'',
+      cantidad_sillas:'',
       restaurante:''
    });
 
@@ -63,9 +63,9 @@ const AddMesas = () => {
                               <h2>Numero</h2>
                               <input type="text" onChange={cambiarValor} name="numero" id="numero"/>
                            </label> 
-                           <label for="cantidad">
+                           <label for="cantidad_sillas">
                               <h2>Cantidad de Sillas</h2>
-                              <input type="text" onChange={cambiarValor} name="cantidad" id="cantidad"/>
+                              <input type="text" onChange={cambiarValor} name="cantidad_sillas" id="cantidad_sillas"/>
                            </label> 
                            <label for="restaurante">
                               <h2>Nombre del Restaurante</h2>

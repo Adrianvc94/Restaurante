@@ -1,0 +1,160 @@
+/* *{
+   box-sizing: border-box;
+   margin:0;
+   padding: 0;
+}
+
+html{
+   font-size: 62.5%;
+   font-family: 'Montserrat', sans-serif;
+} */
+
+body{
+   height: 100vh;
+   width: 100vw;
+   background-image: url(../Images/mainPageBackground.jpg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.root-container_tiposBebidas{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+
+}
+
+.parent-container_tiposBebidas{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 55vw;
+   height: 80vh;
+   background-color: whitesmoke;
+   border-radius: 20px;
+   box-shadow: -3px 0px 20px -2px rgba(0,0,0,0.75);
+}
+
+.search-container_tiposBebidas{
+   display: flex;
+   justify-content: flex-start;
+   align-items: flex-start;
+   flex-direction: row;
+}
+
+.search-box_tiposBebidas{
+   width: 700px;
+   height: 100%;
+   height: 500px;
+   padding: 30px 0;
+   background-color: white;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+.main-title_tiposBebidas{
+   font-size: 2.6rem;
+   line-height: 1.6;
+   /* margin-left: 50px;
+   margin-bottom: 20px; */
+   margin: 30px 0px 25px 50px;
+   font-weight: bold;
+}
+
+.form_tiposBebidas{
+   display: block;
+   margin: 0;
+}
+
+.form_tiposBebidas label{
+   display: flex;
+   align-items: flex-end;
+}
+
+.search-box_tiposBebidas h2{
+   font-size: 2rem;
+   font-weight: 400;
+   line-height: 1.6;
+   margin: 10px auto;
+}
+
+
+.search-box_tiposBebidas input{
+   width: 150px;
+   height: 25px;
+   margin: 10px auto;
+   border:  none;
+   background-color: #F2F2F2;
+   border-radius: 5px;
+}
+
+label h2{
+   width: 60px;
+}
+
+.search-buttons-container_tiposBebidas{
+   display: flex;
+   justify-content: center;
+   margin-top: 10px;
+}
+
+.btnCheck_tiposBebidas, .btnclose_tiposBebidas{
+   margin: 15px 10px 10px 10px;
+   /* padding: 10px; */
+   height: 55px;
+   width: 55px;
+   text-align: center;
+   cursor: pointer;
+   background-color: white;
+   border-radius: 15px;
+   border: none;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+
+.btnclose_tiposBebidas{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnclose_tiposBebidas span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/closeIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnCheck_tiposBebidas{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnCheck_tiposBebidas span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/checkIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnCheck_tiposBebidas:hover, .btnclose_tiposBebidas:hover{
+   background-color: #D9D9D9;
+   box-shadow: -3px 0px 20px -16px rgba(0,0,0,0.75);
+}
+
+
+
+
+
+
+
+
+

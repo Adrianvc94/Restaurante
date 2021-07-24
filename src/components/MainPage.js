@@ -1,6 +1,16 @@
 import "../Styles/MainPage.css";
 
-const MainPage = () => {
+/////// Images
+import securityIcon from '../Images/securityLogo.svg';
+import restaurantIcon from '../Images/restaurantIcon.svg';
+import clientLogo from '../Images/clientLogo.svg';
+import proveedorIcon from '../Images/proveedorIcon.svg';
+import adminIcon from '../Images/adminIcon.svg';
+import reportIcon from '../Images/reportIcon.svg';
+
+function MainPage () {
+   
+
    return (
       
       <body>
@@ -15,33 +25,33 @@ const MainPage = () => {
 
                   <div class="card">
                      <h2 class="card-title">Seguridad</h2>
-                     <img class="card-image" src="../Images/restaurantIcon.svg" alt=""/>
+                     <img class="card-image" src={securityIcon} alt=""/>
                   </div>
 
                   <div class="card" onclick="location.href='listaRestaurante.html'">
                      <h2 class="card-title">Restaurantes</h2>
-                     <img class="card-image" src="../Images/restaurantIcon.svg" alt=""/>
+                     <img class="card-image" src={restaurantIcon} alt=""/>
                   </div>
 
                   <div class="card">
                      <h2 class="card-title">Clientes</h2>
-                     <img class="card-image" src="../Images/clientLogo.svg" alt=""/>
+                     <img class="card-image" src={clientLogo} alt=""/>
                   </div>
 
                   <div class="card">
                      <h2 class="card-title">Proveedores</h2>
-                     <img class="card-image" src="../Images/proveedorIcon.svg" alt="../Images/proveedorIcon.svg"/>
+                     <img class="card-image" src={proveedorIcon} alt=""/>
                   </div>
 
                   <div class="card" onclick="location.href='administracion.html'">
                      <h2 class="card-title">Administración</h2>
-                     <img class="card-image" src="../Images/adminIcon.svg" alt=""/>
+                     <img class="card-image" src={adminIcon} alt=""/>
                   </div>
 
             
                   <div class="card">              
                      <h2 class="card-title">Reportes</h2>
-                     <img class="card-image" src="../Images/reportIcon.svg" alt=""/>
+                     <img class="card-image" src={reportIcon} alt=""/>
                   </div>
                  
                </div>      

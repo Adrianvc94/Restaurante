@@ -18,7 +18,7 @@ body{
    background-repeat: no-repeat;
 }
 
-.root-container_puestos{
+.root-container_clientes{
    display: flex;
    justify-content: center;
    align-items: center;
@@ -27,39 +27,40 @@ body{
 
 }
 
-.parent-container_puestos{
+.parent-container_clientes{
    display: flex;
    justify-content: flex-start;
    align-items: center;
    flex-direction: column;
-   width: 77vw;
-   height: 82vh;
+   width: 80vw;
+   height: 93vh;
    background-color: whitesmoke;
    border-radius: 20px;
    /* box-shadow: 13px 16px 15px -3px rgba(0,0,0,0.75); */
    box-shadow: -3px 0px 20px -2px rgba(0,0,0,0.75);
 }
 
-.search-container_puestos{
+.search-container_clientes{
    display: flex;
    justify-content: flex-start;
    align-items: flex-start;
    flex-direction: row;
    margin: 30px auto 20px auto;
-   width: 1100px;
+   width: 1150px;
 }
 
-.search-buttons-container_puestos{
+.search-buttons-container_clientes{
    display: flex;
    justify-content: center;
    align-items: center;
    flex-wrap: wrap;
    flex-direction: row;
-   width: 160px;
+   width: 150px;
    height: 100%;
 }
 
-.btnrefresh_puestos, .btnclose_puestos, .btnclear_puestos, .btnsearch_puestos{
+.btnrefresh_clientes, .btnclose_clientes, 
+.btnclear_clientes, .btnsearch_clientes{
    margin: 10px auto;
    /* padding: 10px; */
    height: 55px;
@@ -72,13 +73,13 @@ body{
    box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
 }
 
-.btnrefresh_puestos{
+.btnrefresh_clientes{
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.btnrefresh_puestos span{
+.btnrefresh_clientes span{
    width: 40px;
    height: 40px;
    background-image: url('../Images/refreshIcon.svg');
@@ -87,13 +88,13 @@ body{
    background-repeat: no-repeat;
 }
 
-.btnclose_puestos{
+.btnclose_clientes{
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.btnclose_puestos span{
+.btnclose_clientes span{
    width: 40px;
    height: 40px;
    background-image: url('../Images/closeIcon.svg');
@@ -102,13 +103,13 @@ body{
    background-repeat: no-repeat;
 }
 
-.btnclear_puestos{
+.btnclear_clientes{
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.btnclear_puestos span{
+.btnclear_clientes span{
    width: 35px;
    height: 35px;
    background-image: url('../Images/cleanIcon.png');
@@ -117,13 +118,13 @@ body{
    background-repeat: no-repeat;
 }
 
-.btnsearch_puestos{
+.btnsearch_clientes{
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.btnsearch_puestos span{
+.btnsearch_clientes span{
    width: 40px;
    height: 40px;
    background-image: url('../Images/searchIcon.svg');
@@ -132,14 +133,14 @@ body{
    background-repeat: no-repeat;
 }
 
-.btnrefresh_puestos:hover, .btnclose_puestos:hover, 
-.btnclear_puestos:hover, .btnsearch_puestos:hover{
+.btnrefresh_clientes:hover, .btnclose_clientes:hover, 
+.btnclear_clientes:hover, .btnsearch_clientes:hover{
    background-color: #D9D9D9;
    box-shadow: -3px 0px 20px -16px rgba(0,0,0,0.75);
 }
 
-.search-box_puestos{
-   width: 1000px;
+.search-box_clientes{
+   width: 1500px;
    height: 100%;
    padding: 8px 0;
    background-color: white;
@@ -148,22 +149,17 @@ body{
    box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
 }
 
-.form_puestos{
-   display: block;
-   margin: 0;
-}
-
-.form_puestos{
+.form_clientes{
    display: inline-block;
    margin: 0 20px;
 }
 
-.form_puestos label{
+.form_clientes label{
    display: flex;
    align-items: flex-end;
 }
 
-.search-box_puestos h2{
+.search-box_clientes h2{
    font-size: 1.5rem;
    font-weight: 400;
    line-height: 1.6;
@@ -171,29 +167,57 @@ body{
    width: 230px;
 }
 
-.search-box_puestos > h2{
+.search-box_clientes > h2{
    font-size: 1.5rem;
    line-height: 1.6;
    font-weight: 500;
    margin: 10px 0px 10px 16px;
 }
 
-.search-box_puestos input{
+.search-box_clientes input{
    width: 150px;
    height: 25px;
-   margin: 10px auto;
+   margin: 10px 0;
    border:  none;
    background-color: #F2F2F2;
    border-radius: 5px;
 }
 
-.add-delete-buttons_puestos{
+.search-box_clientes .inputFecha{
+   margin-left: 10px;
+}
+
+.formDos_clientes{
+   vertical-align: top;
+   margin-left: 0;
+   margin-top: -45px;
+   display: inline-block;
+}
+
+.formDos_clientes h2{
+   margin-left: 10px;
+   margin-right: 20px;
+   width: 260px;
+}
+
+.formDos_clientes .form_clientes > h2{
+   font-weight: 600;
+}
+
+
+
+/* .formDos .reservacion{
+   margin-top: 50px;
+   margin-left: -150px;
+} */
+
+.add-delete-buttons_clientes{
    display: flex;
    flex-direction: column;
    margin-left: 7.5px;
 }
 
-.btnAdd_puestos, .btnDelete_puestos{
+.btnAdd_clientes, .btnDelete_clientes{
    margin: 10px auto;
    padding: 10px;
    height: 55px;
@@ -206,18 +230,18 @@ body{
    box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
 }
 
-.btnAdd_puestos:hover, .btnDelete_puestos:hover{
+.btnAdd_clientes:hover, .btnDelete_clientes:hover{
    background-color: #D9D9D9;
    box-shadow: -3px 0px 20px -16px rgba(0,0,0,0.75);
 }
 
-.btnAdd_puestos{
+.btnAdd_clientes{
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.btnAdd_puestos span{
+.btnAdd_clientes span{
    width: 40px;
    height: 40px;
    background-image: url('../Images/addIcon.svg');
@@ -226,13 +250,13 @@ body{
    background-repeat: no-repeat;
 }
 
-.btnDelete_puestos{
+.btnDelete_clientes{
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.btnDelete_puestos span:hover{
+.btnDelete_clientes span:hover{
    width: 40px;
    height: 40px;
    background-image: url('../Images/deleteIconRed.svg');
@@ -241,7 +265,7 @@ body{
    background-repeat: no-repeat;
 }
 
-.btnDelete_puestos span{
+.btnDelete_clientes span{
    width: 40px;
    height: 40px;
    background-image: url('../Images/deleteIcon.svg');
@@ -251,8 +275,8 @@ body{
 }
 
 
-.info-container_puestos{
-   width: 980px;
+.info-container_clientes{
+   width: 1100px;
 }
 
 table{

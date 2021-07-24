@@ -1,8 +1,7 @@
 
 import React, {useState, useEffect} from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import '../Styles/Login.css';
-import Puestos from './Puestos';
 
 const Login = () => {
 
@@ -61,9 +60,9 @@ const Login = () => {
                <section class="main-container">
                   <section class="login-container">
                      <section class="login-box">
-                        <h1>Login {role.privilegios}</h1>
+                        <h1>Login</h1>
       
-                        <form action="">
+                        <form className="form-login" action="">
                            <label for="user">
                               <h2>Usuario</h2>
                               <input type="text" onChange={cambiarValor} id="username" name="username" placeholder="Nombre de usuario"/>
@@ -77,8 +76,6 @@ const Login = () => {
                         <button class="btnLogin" onClick={enviarDatos}>Iniciar Sesion</button>
                         <button class="btnCancel">Cancelar</button>
                         <button class="btnClean"></button>
-
-                        <img src="../Images/proveedorIcon.svg" alt="" />
       
                      </section>
                   </section>
@@ -95,19 +92,18 @@ const Login = () => {
    }
 
    const validar = () => {
-      if(role.privilegios === "admin"){
-         return <Redirect to="/puestos"/>
+      if(role.privilegios === "sistema"){
+         return <Redirect to="/mainpagesis" />
+      }else if(role.privilegios === "seguridad"){
+         return <Redirect to="/mainpageseg" />
       }
    }
 
    return(
-     // <Router>
          <div>
             {interfaz()}
-            {/* {role.privilegios == "admin" && <Puestos/>} */}
             {validar()}
          </div>
-      // </Router>
    )
 }
 

@@ -12,15 +12,27 @@ const BebidaCaliente = () => {
       precio:'',
       restaurante:''
    });
-   // const[consecutivo, setConsecutivo] = useState();
+   const[consecutivo, setConsecutivo] = useState();
 
    const [url] = useState('http://localhost:5000/bebidas');
-   // const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
+   const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
 
    const traerDatosBebidas = async () => {
       let datos = await fetch(url)
       .then(response => response.json())
       setBebidas(datos);
+   }
+
+   const traerDatosConsecutivo = async () => {
+      let cons = await fetch(urlconsecutivo)
+      .then(response => response.json())
+      
+      cons.map(c => {return c.prefijo})
+
+      cons.map(c => {
+         if (c.prefijo == "BC" ) 
+            return setConsecutivo(c.prefijo);
+      })
    }
 
    // const cambiarValor = (e) =>{
@@ -44,15 +56,9 @@ const BebidaCaliente = () => {
       .catch(error => console.log(error))
    }
 
-   // const traerConsecutivo = async () => {
-   //    await fetch(urlconsecutivo)
-   //    .then(response => console.log(response.json()))
-   //    .catch(error => console.log(error))
-   // }
-
    useEffect(() => {
       traerDatosBebidas();
-      // traerConsecutivo();
+      traerDatosConsecutivo();
    }, [])
 
 
@@ -100,12 +106,14 @@ const BebidaCaliente = () => {
                            <th>Restaurante</th>
                         </tr>
          
-                        <tr>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                           <td></td>
+                        {bebidas.map(b => {
+                           return <tr>
+                           <td>{consecutivo}</td>
+                           <td>{b.nombre}</td>
+                           <td>{b.Precio}</td>
+                           <td>{b.Restaurante}</td>
                         </tr>
+                        })}
                      </table>
                   </div>
             

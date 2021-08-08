@@ -12,10 +12,10 @@ const ListaRestaurante = () => {
       telefono:'',
       estado:''
    });
-   // const[consecutivo, setConsecutivo] = useState();
+   const [consecutivo, setConsecutivo] = useState([]);
 
    const [url] = useState('http://localhost:5000/restaurantes');
-   // const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
+   const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
 
    const traerDatosRestaurante = async () => {
       let datos = await fetch(url)
@@ -23,13 +23,17 @@ const ListaRestaurante = () => {
       setRestaurantes(datos);
    }
 
-   // const cambiarValor = (e) =>{
-   //    const {name, value} = e.target;
-   //    setRestaurante({
-   //       ...restaurante,
-   //       [name] : value
-   //    })
-   // }
+   const traerDatosConsecutivo = async () => {
+      let cons = await fetch(urlconsecutivo)
+      .then(response => response.json())
+      
+      cons.map(c => {return c.prefijo})
+
+      cons.map(c => {
+         if (c.prefijo == "RES" ) 
+            return setConsecutivo(c.prefijo);
+      })
+   }
 
    const enviarDatos = () =>{
       fetch(url, {
@@ -44,15 +48,9 @@ const ListaRestaurante = () => {
       .catch(error => console.log(error))
    }
 
-   // const traerConsecutivo = async () => {
-   //    await fetch(urlconsecutivo)
-   //    .then(response => console.log(response.json()))
-   //    .catch(error => console.log(error))
-   // }
-
    useEffect(() => {
       traerDatosRestaurante();
-      // traerConsecutivo();
+      traerDatosConsecutivo();
    }, [])
 
 
@@ -105,7 +103,7 @@ const ListaRestaurante = () => {
 
                         {restaurantes.map(r => {
                            return <tr>
-                           <td>{r._id}</td>
+                           <td>{consecutivo}</td>
                            <td>{r.nombre}</td>
                            <td>{r.direccion}</td>
                            <td>{r.especialidad}</td>

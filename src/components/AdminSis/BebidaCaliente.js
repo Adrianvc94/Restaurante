@@ -14,7 +14,7 @@ const BebidaCaliente = () => {
    });
    const[consecutivo, setConsecutivo] = useState();
 
-   const [url] = useState('http://localhost:5000/bebidas');
+   const [url] = useState('http://localhost:5000/bebidacaliente');
    const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
 
    const traerDatosBebidas = async () => {
@@ -110,8 +110,8 @@ const BebidaCaliente = () => {
                            return <tr>
                            <td>{consecutivo}</td>
                            <td>{b.nombre}</td>
-                           <td>{b.Precio}</td>
-                           <td>{b.Restaurante}</td>
+                           <td>{b.precio}</td>
+                           <td>{b.restaurante.nombre}</td>
                         </tr>
                         })}
                      </table>

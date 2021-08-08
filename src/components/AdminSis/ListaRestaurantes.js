@@ -12,8 +12,10 @@ const ListaRestaurante = () => {
       telefono:'',
       estado:''
    });
+   // const[consecutivo, setConsecutivo] = useState();
 
    const [url] = useState('http://localhost:5000/restaurantes');
+   // const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
 
    const traerDatosRestaurante = async () => {
       let datos = await fetch(url)
@@ -42,8 +44,15 @@ const ListaRestaurante = () => {
       .catch(error => console.log(error))
    }
 
+   // const traerConsecutivo = async () => {
+   //    await fetch(urlconsecutivo)
+   //    .then(response => console.log(response.json()))
+   //    .catch(error => console.log(error))
+   // }
+
    useEffect(() => {
       traerDatosRestaurante();
+      // traerConsecutivo();
    }, [])
 
 

@@ -35,6 +35,8 @@ const AddRestaurante = () => {
       .catch(error => console.log(error))
    }
 
+  
+
    const limpiarInputs = () => {
       document.getElementById("form").reset();
    }

@@ -68,7 +68,7 @@ const BebidaCaliente = () => {
                   <div className="search-container_bebCaliente">        
                      <div className="search-buttons-container_bebCaliente">
                         <button className="btnrefresh_bebCaliente"><span></span></button>
-                        <button className="btnclose_bebCaliente"><span></span></button>
+                        <Link to="/tiposbebidas" className="btnclose_bebCaliente"><span></span></Link>
                         <button className="btnclear_bebCaliente"><span></span></button>
                         <button className="btnsearch_bebCaliente"><span></span></button>
                      </div>
@@ -86,7 +86,7 @@ const BebidaCaliente = () => {
                         </form>
                      </div>
                      <div className="add-delete-buttons_bebCaliente">
-                        <button className="btnAdd_bebCaliente"><span></span></button>
+                        <Link to="/addbebidascalientes" className="btnAdd_bebCaliente"><span></span></Link>
                         <button className="btnDelete_bebCaliente"><span></span></button>
                      </div>
                   </div>

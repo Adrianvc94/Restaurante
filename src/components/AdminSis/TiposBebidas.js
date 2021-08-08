@@ -28,11 +28,11 @@ const TiposBebidas = () => {
                         <form class="form_tiposBebidas" action="">
                            <label for="calientes">
                               <h2>Calientes</h2>
-                              <input type="checkbox" value="calientes" onChange={seleccionado} id="calientes"/>
+                              <input type="checkbox" value="bebidascalientes" onChange={seleccionado} id="calientes"/>
                            </label>  
                            <label for="heladas">
                               <h2>Heladas</h2>
-                              <input type="checkbox" value="heladas" onChange={seleccionado} id="heladas"/>
+                              <input type="checkbox" value="bebidasheladas" onChange={seleccionado} id="heladas"/>
                            </label>       
                            <label for="vinos">
                               <h2>Vinos</h2>

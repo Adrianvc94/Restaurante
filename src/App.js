@@ -55,6 +55,7 @@ import AddLimpieza from './components/AdminSis/AddLimpieza';
 import AyudaSeguridadSeg from './components/AdminSeg/AyudaSeguridadSeg';
 import AyudaSistemaSeg from './components/AdminSeg/AyudaSistemaSeg';
 import AddMarcas from './components/AdminSis/AddMarcas';
+import BebidaCaliente from './components/AdminSis/BebidaCaliente';
 
 function App() {
   return (
@@ -105,6 +106,13 @@ function App() {
         <Route path="/tiposbebidas" exact>
           <TiposBebidas/>
         </Route>
+
+        <Route path="/bebidascalientes" exact>
+          <BebidaCaliente/>
+        </Route>
+
+
+
 
         <Route path="/especialidades" exact>
           <ListaEspecialidades/>

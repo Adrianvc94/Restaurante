@@ -1,0 +1,255 @@
+body{
+   height: 100vh;
+   width: 100vw;
+   background-image: url(../Images/mainPageBackground.jpg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.root-container_bebCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+
+}
+
+.parent-container_bebCaliente{
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   flex-direction: column;
+   width: 75vw;
+   height: 80vh;
+   background-color: whitesmoke;
+   border-radius: 20px;
+   /* box-shadow: 13px 16px 15px -3px rgba(0,0,0,0.75); */
+   box-shadow: -3px 0px 20px -2px rgba(0,0,0,0.75);
+}
+
+.search-container_bebCaliente{
+   display: flex;
+   justify-content: flex-start;
+   align-items: flex-start;
+   flex-direction: row;
+   margin: 30px auto 20px auto;
+   width: 1000px;
+}
+
+.search-buttons-container_bebCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   flex-direction: row;
+   width: 140px;
+   height: 100%;
+}
+
+.btnrefresh_bebCaliente, .btnclose_bebCaliente, 
+.btnclear_bebCaliente, .btnsearch_bebCaliente{
+   margin: 10px auto;
+   /* padding: 10px; */
+   height: 55px;
+   width: 55px;
+   text-align: center;
+   cursor: pointer;
+   background-color: white;
+   border-radius: 15px;
+   border: none;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+.btnrefresh_bebCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnrefresh_bebCaliente span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/refreshIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnclose_bebCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnclose_bebCaliente span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/closeIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnclear_bebCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnclear_bebCaliente span{
+   width: 35px;
+   height: 35px;
+   background-image: url('../Images/cleanIcon.png');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnsearch_bebCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnsearch_bebCaliente span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/searchIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnrefresh_bebCaliente:hover, .btnclose_bebCaliente:hover, 
+.btnclear_bebCaliente:hover, .btnsearch_bebCaliente:hover{
+   background-color: #D9D9D9;
+   box-shadow: -3px 0px 20px -16px rgba(0,0,0,0.75);
+}
+
+.search-box_bebCaliente{
+   width: 450px;
+   height: 100%;
+   padding: 8px 0;
+   background-color: white;
+   border-radius: 10px;
+   margin: 0 20px 0 20px;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+.form_bebCaliente{
+   display: block;
+   margin: 0;
+}
+
+.form_bebCaliente label{
+   display: flex;
+   align-items: flex-end;
+}
+
+.search-box_bebCaliente h2{
+   font-size: 1.5rem;
+   font-weight: 400;
+   line-height: 1.6;
+   margin: 10px auto;
+   width: 230px;
+}
+
+.search-box_bebCaliente > h2{
+   font-size: 1.5rem;
+   line-height: 1.6;
+   font-weight: 500;
+   margin: 10px 0px 10px 16px;
+}
+
+.search-box_bebCaliente input{
+   width: 150px;
+   height: 25px;
+   margin: 10px auto;
+   border:  none;
+   background-color: #F2F2F2;
+   border-radius: 5px;
+}
+
+.add-delete-buttons_bebCaliente{
+   display: flex;
+   flex-direction: column;
+   margin-left: 7.5px;
+}
+
+.btnAdd_bebCaliente, .btnDelete_bebCaliente{
+   margin: 10px auto;
+   padding: 10px;
+   height: 55px;
+   width: 55px;
+   text-align: center;
+   cursor: pointer;
+   background-color: white;
+   border-radius: 15px;
+   border: none;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+.btnAdd_bebCaliente:hover, .btnDelete_bebCaliente:hover{
+   background-color: #D9D9D9;
+   box-shadow: -3px 0px 20px -16px rgba(0,0,0,0.75);
+}
+
+.btnAdd_bebCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnAdd_bebCaliente span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/addIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnDelete_bebCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnDelete_bebCaliente span:hover{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/deleteIconRed.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnDelete_bebCaliente span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/deleteIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+
+.info-container_bebCaliente{
+   width: 980px;
+}
+
+table{
+   border-collapse: collapse;
+   width: 100%;
+   background-color: white;
+}
+
+th, td{
+   border: 0.8px solid black;
+   text-align: left;
+   padding: 6px;
+   font-weight: 500;
+   font-size: 1.4rem;
+}

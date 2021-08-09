@@ -85,8 +85,11 @@ const AddBebidaCaliente = () => {
                         <label for="restaurante">
                            <h2>Restaurante</h2>
                            <select name="restaurante" onChange={cambiarValor} name="restaurante" id="restaurante">
+                              <option value="none" selected disabled hidden>
+                                 Eliga una opción
+                              </option>
                               {restaurantes.map(r => {
-                                    return <option value={r.nombre}>{r.nombre}</option> 
+                                    return <option defaultValue={r.nombre} value={r.nombre}>{r.nombre}</option> 
                               })}
                            </select>
                         </label>
@@ -101,16 +104,8 @@ const AddBebidaCaliente = () => {
                         <button onClick={limpiarInputs} className="btnclear_addBebidaCaliente"><span></span></button>
                         <button onClick={enviarDatos} className="btnAdd_addBebidaCaliente"><span></span></button>
                         <Link to="/bebidascalientes" className="btnclose_addBebidaCaliente"><span></span></Link>
-                        {/* <button className="btnImage_addBebidaCaliente"><span></span></button> */}
                      </div>
                   </div>
-      
-                  {/* <div className="image_addBebidaCaliente">
-                     <h2>Foto de la Bebida</h2>
-                     <picture>
-                        <img src="https://foodandtravel.mx/wp-content/uploads/2017/12/atoleFT.jpg" alt=""/>
-                     </picture>
-                  </div> */}
                  
                </div>     
          

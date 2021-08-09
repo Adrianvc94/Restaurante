@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
-import '../../Styles/BebidaCaliente.css';
-// import 'bootstrap/dist/css/bootstrap.css';
+import '../../Styles/BebidaHelada.css';
 
-const BebidaCaliente = () => {
+const BebidaHelada = () => {
 
    const [bebidas, setBebidas] = useState([]);
    const [bebida, setBebida] = useState({
@@ -15,7 +14,7 @@ const BebidaCaliente = () => {
    });
    const[consecutivo, setConsecutivo] = useState();
 
-   const [url] = useState('http://localhost:5000/bebidacaliente');
+   const [url] = useState('http://localhost:5000/bebidahelada');
    const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
 
    const traerDatosBebidas = async () => {
@@ -27,11 +26,9 @@ const BebidaCaliente = () => {
    const traerDatosConsecutivo = async () => {
       let cons = await fetch(urlconsecutivo)
       .then(response => response.json())
-      
-      // cons.map(c => {return c.prefijo})
 
       cons.map(c => {
-         if (c.prefijo == "BC" ) 
+         if (c.prefijo == "BH" ) 
             return setConsecutivo(c.prefijo);
       })
    }
@@ -66,42 +63,43 @@ const BebidaCaliente = () => {
       window.location.reload();
    }
 
+
    const interfaz = () => {
       return(
 
          <body>
    
-            <div className="root-container_bebCaliente">
-         
-               <div className="parent-container_bebCaliente">
-         
-                  <div className="search-container_bebCaliente">        
-                     <div className="search-buttons-container_bebCaliente">
-                        <button onClick={refreshPage} className="btnrefresh_bebCaliente"><span></span></button>
-                        <Link to="/tiposbebidas" className="btnclose_bebCaliente"><span></span></Link>
-                        <button className="btnclear_bebCaliente"><span></span></button>
-                        <button className="btnsearch_bebCaliente"><span></span></button>
+            <div className="root-container_bebidaHelada">
+
+               <div className="parent-container_bebidaHelada">
+
+                  <div className="search-container_bebidaHelada">        
+                     <div className="search-buttons-container_bebidaHelada">
+                        <button onClick={refreshPage} className="btnrefresh_bebidaHelada"><span></span></button>
+                        <Link to="/tiposbebidas" className="btnclose_bebidaHelada"><span></span></Link>
+                        <button className="btnclear_bebidaHelada"><span></span></button>
+                        <button className="btnsearch_bebidaHelada"><span></span></button>
                      </div>
-                     <div className="search-box_bebCaliente">
+                     <div className="search-box_bebidaHelada">
                         <h2>Solo busqueda</h2>
-                        <form className="form_bebCaliente" action="">
-                           <label for="id_bebCaliente">
-                              <h2>Código de la Bebida Caliente</h2>
-                              <input type="text" id="id_bebCaliente"/>
+                        <form id="form" className="form_bebidaHelada" action="">
+                           <label for="idBebidaHe">
+                              <h2>Código de la Bebida Helada</h2>
+                              <input type="text" id="idBebidaHe"/>
                            </label>  
-                           <label for="name_bebCaliente">
-                              <h2>Nombre de la Bebida Caliente</h2>
-                              <input type="text" id="name_bebCaliente"/>
+                           <label for="nameBebidaHe">
+                              <h2>Nombre de la Bebida Helada</h2>
+                              <input type="text" id="nameBebidaHe"/>
                            </label>         
                         </form>
                      </div>
-                     <div className="add-delete-buttons_bebCaliente">
-                        <Link to="/addbebidascalientes" className="btnAdd_bebCaliente"><span></span></Link>
-                        <button className="btnDelete_bebCaliente"><span></span></button>
+                     <div className="add-delete-buttons_bebidaHelada">
+                        <Link to="/addbebidasheladas" className="btnAdd_bebidaHelada"><span></span></Link>
+                        <button className="btnDelete_bebidaHelada"><span></span></button>
                      </div>
                   </div>
             
-                  <div className="info-container_bebCaliente"> 
+                  <div className="info-container_bebidaHelada"> 
                      <table>
                         <thead>
                            <tr>
@@ -122,19 +120,16 @@ const BebidaCaliente = () => {
                            </tr>
                            })}
                         </tbody>
-                       
-         
-                        
                      </table>
                   </div>
             
                </div>
             
             </div>
-         
-         
-         </body>
 
+
+         </body>
+      
       )
    }
    
@@ -145,4 +140,4 @@ const BebidaCaliente = () => {
    )
 }
 
-export default BebidaCaliente;
+export default BebidaHelada;

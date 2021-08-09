@@ -57,11 +57,6 @@ const AddConsecutivos = () => {
                            <label for="tipo">
                               <h2>Tipo de Consecutivo</h2>
                               <input list="tipo" onChange={cambiarValor} name="tipo"/>
-                              <datalist id="tipo">
-                                 <option value="1. consecutivo"></option>
-                                 <option value="2. consecutivo"></option>
-                                 <option value="3. consecutivo"></option>
-                              </datalist>
                            </label> 
                            <label for="descripcion">
                               <h2>Descripcion</h2>

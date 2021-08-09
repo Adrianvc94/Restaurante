@@ -56,6 +56,7 @@ import AyudaSeguridadSeg from './components/AdminSeg/AyudaSeguridadSeg';
 import AyudaSistemaSeg from './components/AdminSeg/AyudaSistemaSeg';
 import AddMarcas from './components/AdminSis/AddMarcas';
 import BebidaCaliente from './components/AdminSis/BebidaCaliente';
+import AddBebidaCaliente from './components/AdminSis/AddBebidaCaliente';
 
 function App() {
   return (
@@ -111,7 +112,9 @@ function App() {
           <BebidaCaliente/>
         </Route>
 
-
+        <Route path="/addbebidascalientes" exact>
+          <AddBebidaCaliente/>
+        </Route>
 
 
         <Route path="/especialidades" exact>

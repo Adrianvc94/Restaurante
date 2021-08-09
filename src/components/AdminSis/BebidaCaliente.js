@@ -28,7 +28,7 @@ const BebidaCaliente = () => {
       let cons = await fetch(urlconsecutivo)
       .then(response => response.json())
       
-      cons.map(c => {return c.prefijo})
+      // cons.map(c => {return c.prefijo})
 
       cons.map(c => {
          if (c.prefijo == "BC" ) 
@@ -114,7 +114,7 @@ const BebidaCaliente = () => {
                               return <tr>
                               <td>{consecutivo}</td>
                               <td>{b.nombre}</td>
-                              <td>{b.precio}</td>
+                              <td>{b.precio} colones</td>
                               <td>{b.restaurante.nombre}</td>
                            </tr>
                            })}

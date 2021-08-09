@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import "../../Styles/AddBebidaCaliente.css";
 
@@ -13,7 +13,10 @@ const AddBebidaCaliente = () => {
       restaurante:''
    });
 
+   const [restaurantes, SetRestaurantes] = useState([]);
+
    const [url] = useState('http://localhost:5000/bebidacaliente');
+   const [urlrestaurante] = useState('http://localhost:5000/restaurantes');
 
    const cambiarValor = (e) =>{
       const {name, value} = e.target;
@@ -21,6 +24,12 @@ const AddBebidaCaliente = () => {
          ...bebidaCaliente,
          [name] : value
       })
+   }
+
+   const traerNombreRestaurante = async () => {
+      let res = await fetch(urlrestaurante)
+      .then(response => response.json())
+      SetRestaurantes(res);
    }
 
    const enviarDatos = async () =>{
@@ -40,6 +49,10 @@ const AddBebidaCaliente = () => {
       document.getElementById("form").reset();
    }
 
+   useEffect(() => {
+      traerNombreRestaurante();
+   },[])
+
    const interfaz = () => {
       return(
 
@@ -55,43 +68,49 @@ const AddBebidaCaliente = () => {
                      
                      <h1 className="main-title_addBebidaCaliente">Información de la Bebida</h1>
       
-                     <form className="form_addBebidaCaliente" action="">
-                        <label for="nameBebidaCa">
+                     <form className="form_addBebidaCaliente" id="form" action="">
+                        <label for="nombre">
                            <h2>Nombre</h2>
-                           <input type="text" id="nameBebidaCa"/>
+                           <input type="text" onChange={cambiarValor} name="nombre" id="nombre"/>
                         </label>       
-                        <label for="ingredientesBeCa">
+                        <label for="ingredientes">
                            <h2>Ingredientes</h2>
-                           <input type="text" id="ingredientesBeCa"/>
+                           <input type="text" onChange={cambiarValor} name="ingredientes" id="ingredientes"/>
                         </label> 
-                        <label for="precioBeCa">
+                        <label for="precio">
                            <h2>Precio</h2>
-                           <input type="text" id="precioBeCa"/>
+                           <input type="text" onChange={cambiarValor} name="precio" id="precio"/>
                         </label> 
-                        <label for="restauranteBeCa">
+
+                        <label for="restaurante">
                            <h2>Restaurante</h2>
-                           <input type="text" id="restauranteBeCa"/>
-                        </label>   
-                        <label for="descripcionBeCa">
+                           <select name="restaurante" onChange={cambiarValor} name="restaurante" id="restaurante">
+                              {restaurantes.map(r => {
+                                    return <option value={r.nombre}>{r.nombre}</option> 
+                              })}
+                           </select>
+                        </label>
+
+                        <label for="descripcion">
                            <h2>Descripcion</h2>
-                           <input type="text" id="descripcionBeCa"/>
+                           <input type="text" onChange={cambiarValor} name="descripcion" id="descripcion"/>
                         </label>                 
                      </form>
       
                      <div className="search-buttons-container_addBebidaCaliente">
-                        <button className="btnclear_addBebidaCaliente"><span></span></button>
-                        <button className="btnAdd_addBebidaCaliente"><span></span></button>
-                        <button className="btnclose_addBebidaCaliente"><span></span></button>
-                        <button className="btnImage_addBebidaCaliente"><span></span></button>
+                        <button onClick={limpiarInputs} className="btnclear_addBebidaCaliente"><span></span></button>
+                        <button onClick={enviarDatos} className="btnAdd_addBebidaCaliente"><span></span></button>
+                        <Link to="/bebidascalientes" className="btnclose_addBebidaCaliente"><span></span></Link>
+                        {/* <button className="btnImage_addBebidaCaliente"><span></span></button> */}
                      </div>
                   </div>
       
-                  <div className="image_addBebidaCaliente">
+                  {/* <div className="image_addBebidaCaliente">
                      <h2>Foto de la Bebida</h2>
                      <picture>
                         <img src="https://foodandtravel.mx/wp-content/uploads/2017/12/atoleFT.jpg" alt=""/>
                      </picture>
-                  </div>
+                  </div> */}
                  
                </div>     
          

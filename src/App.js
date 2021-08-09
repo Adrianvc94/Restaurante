@@ -59,6 +59,8 @@ import BebidaCaliente from './components/AdminSis/BebidaCaliente';
 import AddBebidaCaliente from './components/AdminSis/AddBebidaCaliente';
 import BebidaHelada from './components/AdminSis/BebidaHelada';
 import AddBebidaHelada from './components/AdminSis/AddBedidaHelada';
+import Vinos from './components/AdminSis/Vinos';
+import AddVinos from './components/AdminSis/AddVinos';
 
 function App() {
   return (
@@ -124,6 +126,14 @@ function App() {
 
         <Route path="/addbebidasheladas" exact>
           <AddBebidaHelada/>
+        </Route>
+
+        <Route path="/vinos" exact>
+          <Vinos/>
+        </Route>
+
+        <Route path="/addvinos" exact>
+          <AddVinos/>
         </Route>
 
 

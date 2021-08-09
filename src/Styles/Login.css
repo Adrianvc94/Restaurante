@@ -21,7 +21,7 @@ main{
    align-items: center; 
 }
 
-.background{
+.background_login{
    background-image: url(../Images/Login-Img.png);
    background-size: cover;
    background-position: center;
@@ -33,21 +33,21 @@ main{
    padding: 50px;
 }
 
-.main-container{
+.main-container_login{
    position:absolute;
    left: 56vw;
    bottom: 160px;
    
 }
 
-.login-box{
+.login-box_login{
    padding: 30px;
    border-radius: 10px;
    width: 400px;
    box-shadow: 10px 13px 26px -3px rgba(0,0,0,0.75);
 }
 
-.btnLogin{
+.btnLogin_login{
    margin-top: 40px;
    padding: 10px;
    font-size: 1.5rem;
@@ -58,7 +58,7 @@ main{
    cursor: pointer;
 }
 
-.btnCancel{
+.btnCancel_login{
    margin-left: 25px;
    padding: 10px;
    font-size: 1.5rem;
@@ -69,7 +69,7 @@ main{
    cursor: pointer;
 }
 
-.btnClean{
+.btnClean_login{
    position: relative;
    top: 10px;
    margin-bottom: 0px;
@@ -84,12 +84,12 @@ main{
    cursor: pointer;
 }
 
-h1{
+.h1_login{
    font-size: 5rem;
    font-weight: 300;
 }
 
-h2{
+.h2_login{
    font-size: 2.5rem;
    font-weight: 200;
    margin-top: 40px;
@@ -97,18 +97,18 @@ h2{
    display: block;
 }
 
-.form-login{
+.form-login_login{
    margin-left: 0;
    margin-right: 40px;
 }
 
-.form-login label{
+.form-login_login label{
    display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-input{
+.form-login_login input{
    height: 20px;
    padding: 15px;
    font-size: 1.5rem;

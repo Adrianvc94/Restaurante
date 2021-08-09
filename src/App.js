@@ -1,5 +1,5 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Puestos from './components/AdminSis/Puestos';
 import Login from './components/Login';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import '../../Styles/BebidaCaliente.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 
 const BebidaCaliente = () => {
 
@@ -99,21 +100,28 @@ const BebidaCaliente = () => {
             
                   <div className="info-container_bebCaliente"> 
                      <table>
-                        <tr>
-                           <th>Codigo</th>
-                           <th>Nombre</th>
-                           <th>Precio</th>
-                           <th>Restaurante</th>
-                        </tr>
+                        <thead>
+                           <tr>
+                              <th>Codigo</th>
+                              <th>Nombre</th>
+                              <th>Precio</th>
+                              <th>Restaurante</th>
+                           </tr>
+                        </thead>
+
+                        <tbody>
+                           {bebidas.map(b => {
+                              return <tr>
+                              <td>{consecutivo}</td>
+                              <td>{b.nombre}</td>
+                              <td>{b.precio}</td>
+                              <td>{b.restaurante.nombre}</td>
+                           </tr>
+                           })}
+                        </tbody>
+                       
          
-                        {bebidas.map(b => {
-                           return <tr>
-                           <td>{consecutivo}</td>
-                           <td>{b.nombre}</td>
-                           <td>{b.precio}</td>
-                           <td>{b.restaurante.nombre}</td>
-                        </tr>
-                        })}
+                        
                      </table>
                   </div>
             

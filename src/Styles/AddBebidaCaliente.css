@@ -1,0 +1,190 @@
+body{
+   height: 100vh;
+   width: 100vw;
+   background-image: url(../Images/mainPageBackground.jpg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.root-container_addBebidaCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+}
+
+.parent-container_addBebidaCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 65vw;
+   height: 83vh;
+   background-color: whitesmoke;
+   border-radius: 20px;
+   box-shadow: -3px 0px 20px -2px rgba(0,0,0,0.75);
+}
+
+.search-container_addBebidaCaliente{
+   display: flex;
+   justify-content: flex-start;
+   align-items: flex-start;
+   background-color: white;
+   border-radius: 10px;
+   height: 88%;
+   width: 90%;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+.search-box_addBebidaCaliente{
+   width: 700px;
+   height: 100%;
+   height: 500px;
+   padding: 30px 0;
+}
+
+.main-title_addBebidaCaliente{
+   font-size: 2.2rem;
+   line-height: 1.8;
+   margin-left: 50px;
+   margin-bottom: 20px;
+   margin: 10px 0px 20px 50px;
+}
+
+.form_addBebidaCaliente label{
+   display: flex;
+   align-items: flex-end;
+}
+
+.search-box_addBebidaCaliente h2{
+   font-size: 1.6rem;
+   font-weight: 400;
+   line-height: 1.6;
+   margin: 13px auto;
+}
+
+
+.search-box_addBebidaCaliente input{
+   width: 200px;
+   height: 25px;
+   margin: 10px auto;
+   border:  none;
+   background-color: #F2F2F2;
+   border-radius: 5px;
+}
+
+.form_addBebidaCaliente label h2{
+   width: 180px;
+}
+
+.search-buttons-container_addBebidaCaliente{
+   display: flex;
+   justify-content: center;
+   margin-top: 25px;
+}
+
+.btnAdd_addBebidaCaliente, .btnclose_addBebidaCaliente, 
+.btnclear_addBebidaCaliente, .btnImage_addBebidaCaliente{
+   margin: 15px 20px 10px 20px;
+   height: 55px;
+   width: 55px;
+   text-align: center;
+   cursor: pointer;
+   background-color: white;
+   border-radius: 15px;
+   border: none;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+
+.btnclose_addBebidaCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnclose_addBebidaCaliente span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/closeIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnclear_addBebidaCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnclear_addBebidaCaliente span{
+   width: 35px;
+   height: 35px;
+   background-image: url('../Images/cleanIcon.png');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnAdd_addBebidaCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnAdd_addBebidaCaliente span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/checkIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnImage_addBebidaCaliente{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnImage_addBebidaCaliente span{
+   width: 35px;
+   height: 35px;
+   background-image: url('../Images/searchIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnAdd_addBebidaCaliente:hover, .btnclose_addBebidaCaliente:hover, 
+.btnclear_addBebidaCaliente:hover, .btnImage_addBebidaCaliente:hover{
+   background-color: #D9D9D9;
+   box-shadow: -3px 0px 20px -16px rgba(0,0,0,0.75);
+}
+
+.image_addBebidaCaliente{
+   margin: auto 40px auto 0;
+}
+
+.bufImage h2{
+   font-size: 2rem;
+   font-weight: 400;
+   line-height: 1.6;
+   margin: 10px auto;
+}
+
+.buffetImage img{
+   height: 150px;
+   width: 230px;
+}
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import '../../Styles/ListaRestaurante.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 
 const ListaRestaurante = () => {
 
@@ -93,23 +94,30 @@ const ListaRestaurante = () => {
             
                   <div className="info-container_listarestaurante"> 
                      <table>
-                        <tr>
-                           <th>Codigo</th>
-                           <th>Nombre</th>
-                           <th>Direccion</th>
-                           <th>Especialidad</th>
-                           <th>Telefono</th>
-                        </tr>
+                        <thead>
+                           <tr>
+                              <th>Codigo</th>
+                              <th>Nombre</th>
+                              <th>Direccion</th>
+                              <th>Especialidad</th>
+                              <th>Telefono</th>
+                           </tr>
+                        </thead>
 
-                        {restaurantes.map(r => {
-                           return <tr>
-                           <td>{consecutivo}</td>
-                           <td>{r.nombre}</td>
-                           <td>{r.direccion}</td>
-                           <td>{r.especialidad}</td>
-                           <td>{r.telefono}</td>
-                        </tr>
-                        })}
+                        <tbody>
+                           {restaurantes.map(r => {
+                              return <tr>
+                              <td>{consecutivo}</td>
+                              <td>{r.nombre}</td>
+                              <td>{r.direccion}</td>
+                              <td>{r.especialidad}</td>
+                              <td>{r.telefono}</td>
+                           </tr>
+                           })}
+                        </tbody>
+                       
+
+                       
                      </table>
                   </div>
             

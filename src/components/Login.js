@@ -55,27 +55,26 @@ const Login = () => {
       return (
          <main>
 
-            <section class="background">
+            <section className="background_login">
       
-               <section class="main-container">
-                  <section class="login-container">
-                     <section class="login-box">
-                        <h1>Login</h1>
+               <section className="main-container_login">
+                  <section className="login-container_login">
+                     <section className="login-box_login">
+                        <h1 className="h1_login">Login</h1>
       
-                        <form id="form" className="form-login" action="">
+                        <form id="form" className="form-login_login" action="">
                            <label for="user">
-                              <h2>Usuario</h2>
+                              <h2 className="h2_login">Usuario</h2>
                               <input type="text" onChange={cambiarValor} id="username" name="username" placeholder="Nombre de usuario"/>
                            </label>  
                            <label for="password">
-                              <h2>Contraseña</h2>
+                              <h2 className="h2_login">Contraseña</h2>
                               <input type="password" onChange={cambiarValor} id="password" name="password" placeholder="Contraseña"/>
                            </label>         
                         </form>
       
-                        <button class="btnLogin" onClick={enviarDatos}>Iniciar Sesion</button>
-                        <button class="btnCancel" onClick={limpiarInputs}>Cancelar</button>
-                        {/* <button class="btnClean"></button> */}
+                        <button className="btnLogin_login" onClick={enviarDatos}>Iniciar Sesion</button>
+                        <button className="btnCancel_login" onClick={limpiarInputs}>Cancelar</button>
       
                      </section>
                   </section>

@@ -27,7 +27,7 @@ const Licores = () => {
       .then(response => response.json())
 
       cons.map(c => {
-         if (c.prefijo == "V" ) 
+         if (c.prefijo == "L" ) 
             return setConsecutivo(c.prefijo);
       })
    }
@@ -110,21 +110,27 @@ const Licores = () => {
             
                   <div className="info-container_licores"> 
                      <table>
-                        <tr>
-                           <th>Codigo</th>
-                           <th>Nombre</th>
-                           <th>Cantidad</th>
-                           <th>Precio</th>
-                           <th>Nacionalidad</th>
-                        </tr>
-         
-                        <tr>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                        </tr>
+                        <thead>
+                           <tr>
+                              <th>Codigo</th>
+                              <th>Nombre</th>
+                              <th>Cantidad</th>
+                              <th>Precio</th>
+                              <th>Nacionalidad</th>
+                           </tr>
+                        </thead>
+                     
+                        <tbody>
+                           {licores.map(l => {
+                              return <tr>
+                              <td>{consecutivo}</td>
+                              <td>{l.nombre}</td>
+                              <td>{l.cantidad}</td>
+                              <td>{l.precio_unitario} colones</td>
+                              <td>{l.nacionalidad.nombre}</td>
+                           </tr>
+                           })}
+                        </tbody>
                      </table>
                   </div>
             

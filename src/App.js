@@ -64,6 +64,7 @@ import AddVinos from './components/AdminSis/AddVinos';
 import Gaseosa from './components/AdminSis/Gaseosa';
 import AddGaseosa from './components/AdminSis/AddGaseosa';
 import Licores from './components/AdminSis/Licores';
+import AddLicores from './components/AdminSis/AddLicores';
 
 function App() {
   return (
@@ -150,6 +151,10 @@ function App() {
 
         <Route path="/licores" exact>
           <Licores/>
+        </Route>
+
+        <Route path="/addlicores" exact>
+          <AddLicores/>
         </Route>
 
 

@@ -91,6 +91,9 @@ const AddUsuarios = () => {
                            <label for="privilegios">
                               <h2>Privilegios</h2>
                               <select name="privilegios" onChange={cambiarValor} name="privilegios" id="privilegios">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
                                  <option value="sistema">Administrador del Sistema</option>
                                  <option value="seguridad">Administrador de Seguridad</option>
                                  <option value="restaurante">Administrador del Restaurante</option>

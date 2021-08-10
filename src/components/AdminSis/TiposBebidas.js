@@ -38,9 +38,9 @@ const TiposBebidas = () => {
                               <h2>Vinos</h2>
                               <input type="checkbox" value="vinos" onChange={seleccionado} id="vinos"/>
                            </label> 
-                           <label for="gaseosas">
+                           <label for="gaseosa">
                               <h2>Gaseosas</h2>
-                              <input type="checkbox" value="gaseosas" onChange={seleccionado} id="gaseosas"/>
+                              <input type="checkbox" value="gaseosa" onChange={seleccionado} id="gaseosa"/>
                            </label> 
                            <label for="licores">
                               <h2>Licores</h2>

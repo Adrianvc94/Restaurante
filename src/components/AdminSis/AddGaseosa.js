@@ -1,17 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import "../../Styles/AddVinos.css";
+import "../../Styles/AddGaseosa.css";
 
-const AddVinos = () => {
+const AddGaseosa = () => {
 
    
-   const [vino, setVino] = useState({
+   const [gaseosa, setGaseosa] = useState({
       nombre:'',
       marca:'',
       nacionalidad:'',
-      precio_unitario:'',
-      precio_botella:'',
-      anno_cosecha:'',
+      precio:'',
       restaurante:'',
       cantidada:'',
       descripcion:''
@@ -21,15 +19,16 @@ const AddVinos = () => {
    const [paises, SetPaises] = useState([]);
    const [marcas, SetMarcas] = useState([]);
 
-   const [url] = useState('http://localhost:5000/vino');
+   const [url] = useState('http://localhost:5000/gaseosa');
    const [urlrestaurante] = useState('http://localhost:5000/restaurantes');
    const [urlpaises] = useState('http://localhost:5000/paises');
    const [urlmarcas] = useState('http://localhost:5000/marcas');
 
+
    const cambiarValor = (e) =>{
       const {name, value} = e.target;
-      setVino({
-         ...vino,
+      setGaseosa({
+         ...gaseosa,
          [name] : value
       })
    }
@@ -59,7 +58,7 @@ const AddVinos = () => {
             "Content-type": "application/json"
          },
          method:"POST",
-         body: JSON.stringify(vino)
+         body: JSON.stringify(gaseosa)
       })
       .then(response => response.json())
       .catch(error => console.log(error))
@@ -67,6 +66,7 @@ const AddVinos = () => {
 
    const limpiarInputs = () => {
       document.getElementById("form").reset();
+      document.getElementById("form2").reset();
    }
 
    useEffect(() => {
@@ -79,20 +79,20 @@ const AddVinos = () => {
       return(
 
          <body>
-
-            <div className="root-container_addVino">
-
-               <div className="parent-container_addVino">
-
-                  <div className="search-container_addVino">        
-                     <div className="search-box_addVino">
+   
+            <div className="root-container_addGaseosa">
+         
+               <div className="parent-container_addGaseosa">
+         
+                  <div className="search-container_addGaseosa">        
+                     <div className="search-box_addGaseosa">
                         
-                        <h1 className="main-title_addVino">Información del Vino</h1>
-
-                        <form id="form" className="form_addVino" action="">
-                           <label for="nameVino">
+                        <h1 className="main-title_addGaseosa">Información de la Bebida</h1>
+         
+                        <form id="form" className="form_addGaseosa" action="">
+                           <label for="nombre">
                               <h2>Nombre</h2>
-                              <input type="text" onChange={cambiarValor} name="nombre" id="nameVino"/>
+                              <input type="text" onChange={cambiarValor} name="nombre" id="nombre"/>
                            </label>       
                            <label for="marca">
                               <h2>Marca</h2>
@@ -116,31 +116,10 @@ const AddVinos = () => {
                                  })}
                               </select>
                            </label>
-                           <label for="precio_unitario">
-                              <h2>Precio Unitario</h2>
-                              <input type="text" onChange={cambiarValor} name="precio_unitario" id="precio_unitario"/>
+                           <label for="precio">
+                              <h2>Precio</h2>
+                              <input type="text" onChange={cambiarValor} name="precio" id="precio"/>
                            </label>   
-                           <label for="precio_botella">
-                              <h2>Precio Botella</h2>
-                              <input type="text" onChange={cambiarValor} name="precio_botella" id="precio_botella"/>
-                           </label>   
-                         
-                                          
-                        </form>
-
-                        <div className="search-buttons-container_addVino">
-                           <button onClick={limpiarInputs} className="btnclear_addVino"><span></span></button>
-                           <button onClick={enviarDatos} className="btnAdd_addVino"><span></span></button>
-                           <Link to="/vinos" className="btnclose_addVino"><span></span></Link>
-                        </div>
-                     </div>
-
-                     <div className="container-form2_addVino">
-                        <form id="form2" className="form_addVino" action="">
-                           <label for="anno_cosecha">
-                              <h2>Año de la Cosecha</h2>
-                              <input type="text" onChange={cambiarValor} name="anno_cosecha" id="anno_cosecha"/>
-                           </label> 
                            <label for="restaurante">
                               <h2>Restaurante</h2>
                               <select name="restaurante" onChange={cambiarValor} name="restaurante" id="restaurante">
@@ -151,18 +130,28 @@ const AddVinos = () => {
                                        return <option defaultValue={r.nombre} value={r.nombre}>{r.nombre}</option> 
                                  })}
                               </select>
-                           </label>
+                           </label>                
+                        </form>
+         
+                        <div className="search-buttons-container_addGaseosa">
+                           <button onClick={limpiarInputs} className="btnclear_addGaseosa"><span></span></button>
+                           <button onClick={enviarDatos} className="btnAdd_addGaseosa"><span></span></button>
+                           <Link to="/gaseosa" className="btnclose_addGaseosa"><span></span></Link>
+                        </div>
+                     </div>
+         
+                     <div className="container-form2_addGaseosa">
+                        <form id="form2" className="form_addGaseosa" action="">
                            <label for="cantidad">
                               <h2>Cantidad</h2>
                               <input type="text" onChange={cambiarValor} name="cantidad" id="cantidad"/>
                            </label>   
                            <label for="descripcion">
-                              <h2>Descripción</h2>
+                              <h2>Descripcion</h2>
                               <input type="text" onChange={cambiarValor} name="descripcion" id="descripcion"/>
                            </label> 
                         </form>
                
-                     
                      </div>
                   
                   </div>     
@@ -183,5 +172,5 @@ const AddVinos = () => {
    )
 }
 
-export default AddVinos;
+export default AddGaseosa;
 

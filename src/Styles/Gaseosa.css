@@ -1,0 +1,255 @@
+body{
+   height: 100vh;
+   width: 100vw;
+   background-image: url(../Images/mainPageBackground.jpg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.root-container_gaseosa{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+
+}
+
+.parent-container_gaseosa{
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   flex-direction: column;
+   width: 75vw;
+   height: 80vh;
+   background-color: whitesmoke;
+   border-radius: 20px;
+   /* box-shadow: 13px 16px 15px -3px rgba(0,0,0,0.75); */
+   box-shadow: -3px 0px 20px -2px rgba(0,0,0,0.75);
+}
+
+.search-container_gaseosa{
+   display: flex;
+   justify-content: flex-start;
+   align-items: flex-start;
+   flex-direction: row;
+   margin: 30px auto 20px auto;
+   width: 1000px;
+}
+
+.search-buttons-container_gaseosa{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
+   flex-direction: row;
+   width: 140px;
+   height: 100%;
+}
+
+.btnrefresh_gaseosa, .btnclose_gaseosa, 
+.btnclear_gaseosa, .btnsearch_gaseosa{
+   margin: 10px auto;
+   /* padding: 10px; */
+   height: 55px;
+   width: 55px;
+   text-align: center;
+   cursor: pointer;
+   background-color: white;
+   border-radius: 15px;
+   border: none;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+.btnrefresh_gaseosa{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnrefresh_gaseosa span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/refreshIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnclose_gaseosa{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnclose_gaseosa span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/closeIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnclear_gaseosa{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnclear_gaseosa span{
+   width: 35px;
+   height: 35px;
+   background-image: url('../Images/cleanIcon.png');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnsearch_gaseosa{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnsearch_gaseosa span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/searchIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnrefresh_gaseosa:hover, .btnclose_gaseosa:hover, 
+.btnclear_gaseosa:hover, .btnsearch_gaseosa:hover{
+   background-color: #D9D9D9;
+   box-shadow: -3px 0px 20px -16px rgba(0,0,0,0.75);
+}
+
+.search-box_gaseosa{
+   width: 450px;
+   height: 100%;
+   padding: 8px 0;
+   background-color: white;
+   border-radius: 10px;
+   margin: 0 20px 0 20px;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+.form_gaseosa{
+   display: block;
+   margin: 0;
+}
+
+.form_gaseosa label{
+   display: flex;
+   align-items: flex-end;
+}
+
+.search-box_gaseosa h2{
+   font-size: 1.5rem;
+   font-weight: 400;
+   line-height: 1.6;
+   margin: 10px auto;
+   width: 230px;
+}
+
+.search-box_gaseosa > h2{
+   font-size: 1.5rem;
+   line-height: 1.6;
+   font-weight: 500;
+   margin: 10px 0px 10px 16px;
+}
+
+.search-box_gaseosa input{
+   width: 150px;
+   height: 25px;
+   margin: 10px auto;
+   border:  none;
+   background-color: #F2F2F2;
+   border-radius: 5px;
+}
+
+.add-delete-buttons_gaseosa{
+   display: flex;
+   flex-direction: column;
+   margin-left: 7.5px;
+}
+
+.btnAdd_gaseosa, .btnDelete_gaseosa{
+   margin: 10px auto;
+   padding: 10px;
+   height: 55px;
+   width: 55px;
+   text-align: center;
+   cursor: pointer;
+   background-color: white;
+   border-radius: 15px;
+   border: none;
+   box-shadow: 0 4px 8px rgb(0 0 0 / 16%);
+}
+
+.btnAdd_gaseosa:hover, .btnDelete_gaseosa:hover{
+   background-color: #D9D9D9;
+   box-shadow: -3px 0px 20px -16px rgba(0,0,0,0.75);
+}
+
+.btnAdd_gaseosa{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnAdd_gaseosa span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/addIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnDelete_gaseosa{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.btnDelete_gaseosa span:hover{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/deleteIconRed.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+.btnDelete_gaseosa span{
+   width: 40px;
+   height: 40px;
+   background-image: url('../Images/deleteIcon.svg');
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+}
+
+
+.info-container_gaseosa{
+   width: 980px;
+}
+
+table{
+   border-collapse: collapse;
+   width: 100%;
+   background-color: white;
+}
+
+th, td{
+   border: 0.8px solid black;
+   text-align: left;
+   padding: 6px;
+   font-weight: 500;
+   font-size: 1.4rem;
+}

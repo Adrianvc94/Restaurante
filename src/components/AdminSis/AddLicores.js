@@ -1,10 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import "../../Styles/AddLicores.css";
+
+
+import {Username} from '../../Helper/Context';
 
 const AddLicores = () => {
 
    
+   const {username, setUsername} = useContext(Username)
+
    const [licor, setLicor] = useState({
       nombre:'',
       marca:'',
@@ -24,6 +29,7 @@ const AddLicores = () => {
    const [urlrestaurante] = useState('http://localhost:5000/restaurantes');
    const [urlpaises] = useState('http://localhost:5000/paises');
    const [urlmarcas] = useState('http://localhost:5000/marcas');
+   const [urlbitacora] = useState('http://localhost:5000/bitacora');
 
    const cambiarValor = (e) =>{
       const {name, value} = e.target;
@@ -59,6 +65,30 @@ const AddLicores = () => {
          },
          method:"POST",
          body: JSON.stringify(licor)
+      })
+      .then(response => response.json())
+      .catch(error => console.log(error))
+
+      var fecha = new Date();
+
+      var date = fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate();
+      var time = fecha.getHours() + ":" + fecha.getMinutes();
+
+      var horaFecha = date + " " + time
+
+      const bitacora = {
+         usuario:username.username,
+         fechaHora:horaFecha,
+         descripcion:"Agregó Licor"
+      }
+
+      await fetch(urlbitacora, {
+         headers:{
+            Accept:"application/json",
+            "Content-type": "application/json"
+         },
+         method:"POST",
+         body: JSON.stringify(bitacora)
       })
       .then(response => response.json())
       .catch(error => console.log(error))

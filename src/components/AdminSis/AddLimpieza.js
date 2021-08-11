@@ -1,8 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import '../../Styles/AddLimpieza.css';
 
+import {Username} from '../../Helper/Context';
+
 const AddLimpieza = () => {
+
+   const {username, setUsername} = useContext(Username)
 
    const [limpieza, setLimpieza] = useState({
       restaurante:'',
@@ -16,7 +20,17 @@ const AddLimpieza = () => {
       liquido:''
    });
 
+   
+   const [restaurantes, SetRestaurantes] = useState([]);
+   const [marcas, SetMarcas] = useState([]);
+   const [medidas, SetMedidas] = useState([]);
+
    const [url] = useState('http://localhost:5000/limpieza');
+   const [urlbitacora] = useState('http://localhost:5000/bitacora');
+
+   const [urlrestaurante] = useState('http://localhost:5000/restaurantes');
+   const [urlmarcas] = useState('http://localhost:5000/marcas');
+   const [urlmedidas] = useState('http://localhost:5000/medidas');
 
    const cambiarValor = (e) =>{
       const {name, value} = e.target;
@@ -24,6 +38,24 @@ const AddLimpieza = () => {
          ...limpieza,
          [name] : value
       })
+   }
+
+   const traerNombreRestaurante = async () => {
+      let res = await fetch(urlrestaurante)
+      .then(response => response.json())
+      SetRestaurantes(res);
+   }
+
+   const traerMarca = async () => {
+      let marca = await fetch(urlmarcas)
+      .then(response => response.json())
+      SetMarcas(marca);
+   }
+
+   const traerMedidas = async () => {
+      let unidad = await fetch(urlmedidas)
+      .then(response => response.json())
+      SetMedidas(unidad);
    }
 
    const enviarDatos = async () =>{
@@ -37,6 +69,30 @@ const AddLimpieza = () => {
       })
       .then(response => response.json())
       .catch(error => console.log(error))
+
+      var fecha = new Date();
+
+      var date = fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate();
+      var time = fecha.getHours() + ":" + fecha.getMinutes();
+
+      var horaFecha = date + " " + time
+
+      const bitacora = {
+         usuario:username.username,
+         fechaHora:horaFecha,
+         descripcion:"Agregó Limpieza"
+      }
+
+      await fetch(urlbitacora, {
+         headers:{
+            Accept:"application/json",
+            "Content-type": "application/json"
+         },
+         method:"POST",
+         body: JSON.stringify(bitacora)
+      })
+      .then(response => response.json())
+      .catch(error => console.log(error))
    }
 
    const limpiarInputs = () => {
@@ -44,6 +100,11 @@ const AddLimpieza = () => {
       document.getElementById("form2").reset();
    }
 
+   useEffect(() => {
+      traerNombreRestaurante();
+      traerMarca();
+      traerMedidas();
+   },[])
    
 
    const interfaz = () => {
@@ -64,26 +125,31 @@ const AddLimpieza = () => {
                         <form id="form" className="form_addlimpieza" action="">
                            <label for="restaurante">
                               <h2>Restaurante</h2>
-                              <input list="restaurante" onChange={cambiarValor} name="restaurante"/>
-                              <datalist id="restaurante">
-                                 <option value="1. Restaurante"></option>
-                                 <option value="2. Restaurante"></option>
-                                 <option value="3. Restaurante"></option>
-                              </datalist>
-                           </label>  
+                              <select onChange={cambiarValor} name="restaurante" id="restaurante">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
+                                 {restaurantes.map(r => {
+                                       return <option defaultValue={r.nombre} value={r.nombre}>{r.nombre}</option> 
+                                 })}
+                              </select>
+                           </label>
                            <label for="nombre">
                               <h2>Nombre</h2>
                               <input type="text" onChange={cambiarValor} name="nombre" id="nombre"/>
-                           </label>  
+                           </label> 
+
                            <label for="marca">
                               <h2>Marca</h2>
-                              <input list="marca" onChange={cambiarValor} name="marca"/>
-                              <datalist id="marca">
-                                 <option value="1. Marca"></option>
-                                 <option value="2. Marca"></option>
-                                 <option value="3. Marca"></option>
-                              </datalist>
-                           </label>       
+                              <select name="marca" onChange={cambiarValor} name="marca" id="marca">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
+                                 {marcas.map(m => {
+                                       return <option defaultValue={m.nombre} value={m.nombre}>{m.nombre}</option> 
+                                 })}
+                              </select>
+                           </label>    
                         
                            <label for="cantidad">
                               <h2>Cantidad</h2>
@@ -107,7 +173,6 @@ const AddLimpieza = () => {
                            <button onClick={limpiarInputs} className="btnclear_addlimpieza"><span></span></button>
                            <button onClick={enviarDatos} className="btnAdd_addlimpieza"><span></span></button>
                            <Link to="/limpieza" className="btnclose_addlimpieza"><span></span></Link>
-                           <button className="btnImage_addlimpieza"><span></span></button>
                         </div>
                      </div>
          
@@ -121,9 +186,16 @@ const AddLimpieza = () => {
                               <h2>Cantidad de Medida</h2>
                               <input type="text" onChange={cambiarValor} name="cantidad_medida" id="cantidad_medida"/>
                            </label>   
-                           <label for="unidad_medida">
+                           <label for="medida">
                               <h2>Unidad de Medida</h2>
-                              <input type="text" id="unidad_medida" onChange={cambiarValor} name="unidad_medida"/>
+                              <select onChange={cambiarValor} name="medida" id="medida">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
+                                 {medidas.map(m => {
+                                       return <option defaultValue={m.unidad} value={m.unidad}>{m.unidad}</option> 
+                                 })}
+                              </select>
                            </label>
                            
                         </form>

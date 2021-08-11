@@ -11,13 +11,25 @@ const Limpieza = () => {
       restaurante:'',
       restaurante:''
    });
+   const[consecutivo, setConsecutivo] = useState();
 
    const [url] = useState('http://localhost:5000/limpieza');
+   const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
 
    const traerDatosLimpieza = async () => {
       let datos = await fetch(url)
       .then(response => response.json())
       setLimpiezas(datos);
+   }
+
+   const traerDatosConsecutivo = async () => {
+      let cons = await fetch(urlconsecutivo)
+      .then(response => response.json())
+
+      cons.map(c => {
+         if (c.prefijo == "LH" ) 
+            return setConsecutivo(c.prefijo);
+      })
    }
 
    const cambiarValor = (e) =>{
@@ -43,7 +55,12 @@ const Limpieza = () => {
 
    useEffect(() => {
       traerDatosLimpieza();
+      traerDatosConsecutivo();
    }, [])
+
+   const refreshPage = ()=>{
+      window.location.reload();
+   }
 
    
 
@@ -59,7 +76,7 @@ const Limpieza = () => {
 
                   <div className="search-container_limpieza">        
                      <div className="search-buttons-container_limpieza">
-                        <button className="btnrefresh_limpieza"><span></span></button>
+                        <button onClick={refreshPage} className="btnrefresh_limpieza"><span></span></button>
                         <Link to="/productos" className="btnclose_limpieza"><span></span></Link>
                         <button className="btnclear_limpieza"><span></span></button>
                         <button className="btnsearch_limpieza"><span></span></button>
@@ -101,7 +118,7 @@ const Limpieza = () => {
                        
                         {limpiezas.map(l => {
                            return <tr>
-                           <td>{l._id}</td>
+                           <td>{consecutivo}</td>
                            <td>{l.nombre}</td>
                            <td>{l.cantidad}</td>
                            <td>{l.restaurante}</td>

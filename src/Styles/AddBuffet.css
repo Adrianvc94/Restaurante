@@ -106,6 +106,16 @@ body{
    width: 180px;
 }
 
+.form_addbuffet select{
+   width: 150px;
+   height: 25px;
+   margin: 10px auto;
+   border:  none;
+   background-color: #F2F2F2;
+   border-radius: 5px;
+   font-size: 1.4rem;
+}
+
 .search-buttons-container_addbuffet{
    display: flex;
    justify-content: center;

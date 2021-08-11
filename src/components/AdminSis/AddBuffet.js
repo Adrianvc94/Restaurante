@@ -1,8 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import '../../Styles/AddBuffet.css';
 
+
+import {Username} from '../../Helper/Context';
+
 const AddBuffet = () => {
+
+   
+   const {username, setUsername} = useContext(Username)
 
    const [buffet, setBuffet] = useState({
       nombre:'',
@@ -11,7 +17,11 @@ const AddBuffet = () => {
       medida:''
    });
 
+   const [medidas, SetMedidas] = useState([]);
+
    const [url] = useState('http://localhost:5000/buffet');
+   const [urlmedidas] = useState('http://localhost:5000/medidas');
+   const [urlbitacora] = useState('http://localhost:5000/bitacora');
 
    const cambiarValor = (e) =>{
       const {name, value} = e.target;
@@ -19,6 +29,12 @@ const AddBuffet = () => {
          ...buffet,
          [name] : value
       })
+   }
+
+   const traerUnidadMedias = async () => {
+      let unidad = await fetch(urlmedidas)
+      .then(response => response.json())
+      SetMedidas(unidad);
    }
 
    const enviarDatos = async () =>{
@@ -32,11 +48,39 @@ const AddBuffet = () => {
       })
       .then(response => response.json())
       .catch(error => console.log(error))
+
+      var fecha = new Date();
+
+      var date = fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate();
+      var time = fecha.getHours() + ":" + fecha.getMinutes();
+
+      var horaFecha = date + " " + time
+
+      const bitacora = {
+         usuario:username.username,
+         fechaHora:horaFecha,
+         descripcion:"Agregó Buffet"
+      }
+
+      await fetch(urlbitacora, {
+         headers:{
+            Accept:"application/json",
+            "Content-type": "application/json"
+         },
+         method:"POST",
+         body: JSON.stringify(bitacora)
+      })
+      .then(response => response.json())
+      .catch(error => console.log(error))
    }
 
    const limpiarInputs = () => {
       document.getElementById("form_addbuffet").reset();
    }
+
+   useEffect(() => {
+      traerUnidadMedias();
+   },[])
 
 
    const interfaz = () => {
@@ -63,26 +107,28 @@ const AddBuffet = () => {
                               <h2>Precio</h2>
                               <input type="text" onChange={cambiarValor} name="precio" id="precioBuff"/>
                            </label> 
-                           <label for="tipoBuff">
+                           <label for="tipo">
                               <h2>Tipo</h2>
-                              <input list="tipoBuff" onChange={cambiarValor} name="tipo"/>
-                              <datalist id="tipoBuff">
+                              <input list="tipo" onChange={cambiarValor} name="tipo"/>
+                              <datalist id="tipo">
                                  <option value="Marina"></option>
                                  <option value="Vegetal"></option>
                                  <option value="Frutas"></option>
                                  <option value="Mediterránea "></option>
                               </datalist>
                            </label> 
-                           <label for="medidaBuff">
-                              <h2>Unidad de Medida</h2>
-                              <input list="medidaBuff" onChange={cambiarValor} name="medida"/>
-                              <datalist id="medidaBuff">
-                                 <option value="Unidades de capacidad"></option>
-                                 <option value="Unidades de densidad"></option>
-                                 <option value="Unidades de energía"></option>
-                                 <option value="Unidades de fuerza "></option>
-                              </datalist>
-                           </label> 
+
+                           <label for="medida">
+                           <h2>Restaurante</h2>
+                           <select onChange={cambiarValor} name="medida" id="medida">
+                              <option value="none" selected disabled hidden>
+                                 Eliga una opción
+                              </option>
+                              {medidas.map(m => {
+                                    return <option defaultValue={m.unidad} value={m.unidad}>{m.unidad}</option> 
+                              })}
+                           </select>
+                        </label>
                            
                         </form>
          
@@ -90,15 +136,7 @@ const AddBuffet = () => {
                            <button className="btnclear_addbuffet" onClick={limpiarInputs}><span></span></button>
                            <button className="btnAdd_addbuffet" onClick={enviarDatos}><span></span></button>
                            <Link to="/buffet" className="btnclose_addbuffet"><span></span></Link>
-                           <button className="btnImage_addbuffet"><span></span></button>
                         </div>
-                     </div>
-         
-                     <div className="buffetImage_addbuffet">
-                        <h2>Foto del Platillo</h2>
-                        <picture>
-                           <img src="https://us.123rf.com/450wm/mosaymay/mosaymay1609/mosaymay160900152/65435258-buffet-de-l%C3%ADnea-para-el-almuerzo-en-el-restaurante-la-comida.jpg?ver=6" alt=""/>
-                        </picture>
                      </div>
                   
                   </div>     

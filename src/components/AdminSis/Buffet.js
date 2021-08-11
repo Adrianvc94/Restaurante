@@ -11,13 +11,25 @@ const Buffet = () => {
       tipo:'',
       medida:''
    });
+   const[consecutivo, setConsecutivo] = useState();
 
    const [url] = useState('http://localhost:5000/buffet');
+   const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
 
    const traerDatosBuffet = async () => {
       let datos = await fetch(url)
       .then(response => response.json())
       setBuffets(datos);
+   }
+
+   const traerDatosConsecutivo = async () => {
+      let cons = await fetch(urlconsecutivo)
+      .then(response => response.json())
+
+      cons.map(c => {
+         if (c.prefijo == "BUF" ) 
+            return setConsecutivo(c.prefijo);
+      })
    }
 
    const enviarDatos = () =>{
@@ -33,8 +45,13 @@ const Buffet = () => {
       .catch(error => console.log(error))
    }
 
+   const refreshPage = ()=>{
+      window.location.reload();
+   }
+
    useEffect(() => {
       traerDatosBuffet();
+      traerDatosConsecutivo();
    }, [])
 
    const interfaz = () => {
@@ -49,7 +66,7 @@ const Buffet = () => {
 
                   <div className="search-container_buffet">        
                      <div className="search-buttons-container_buffet">
-                        <button className="btnrefresh_buffet"><span></span></button>
+                        <button onClick={refreshPage} className="btnrefresh_buffet"><span></span></button>
                         <Link to="/especiales" className="btnclose_buffet"><span></span></Link>
                         <button className="btnclear_buffet"><span></span></button>
                         <button className="btnsearch_buffet"><span></span></button>
@@ -85,7 +102,7 @@ const Buffet = () => {
 
                         {buffets.map(b => {
                            return <tr>
-                           <td>{b._id}</td>
+                           <td>{consecutivo}</td>
                            <td>{b.nombre}</td>
                            <td>{b.precio}</td>
                            <td>{b.tipo}</td>

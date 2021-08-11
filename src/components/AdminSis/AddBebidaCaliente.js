@@ -113,7 +113,7 @@ const AddBebidaCaliente = () => {
 
                         <label for="restaurante">
                            <h2>Restaurante</h2>
-                           <select name="restaurante" onChange={cambiarValor} name="restaurante" id="restaurante">
+                           <select onChange={cambiarValor} name="restaurante" id="restaurante">
                               <option value="none" selected disabled hidden>
                                  Eliga una opción
                               </option>

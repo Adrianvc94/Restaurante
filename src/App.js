@@ -68,6 +68,7 @@ import AddLicores from './components/AdminSis/AddLicores';
 import {Username} from './Helper/Context';
 import { useState } from 'react';
 import ReportesSeg from './components/AdminSeg/ReportesSeg';
+import Bitacora from './components/AdminSeg/Bitacora';
 
 function App() {
 
@@ -477,6 +478,12 @@ function App() {
         <Route path="/reportesseg" exact>
           <Username.Provider value={{username, setUsername}}>
             <ReportesSeg/>
+          </Username.Provider> 
+        </Route>
+
+        <Route path="/bitacora" exact>
+          <Username.Provider value={{username, setUsername}}>
+            <Bitacora/>
           </Username.Provider> 
         </Route>
 

@@ -1,9 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import "../../Styles/AddDesechables.css";
 
+import {Username} from '../../Helper/Context';
+
 const AddDesechables = () => {
 
+   
+   const {username, setUsername} = useContext(Username)
    
    const [desechable, setDesechable] = useState({
       restaurante:'',
@@ -13,7 +17,15 @@ const AddDesechables = () => {
       descripcion:''
    });
 
+   
+   const [restaurantes, SetRestaurantes] = useState([]);
+   const [marcas, SetMarcas] = useState([]);
+
    const [url] = useState('http://localhost:5000/desechables');
+   const [urlbitacora] = useState('http://localhost:5000/bitacora');
+   const [urlrestaurante] = useState('http://localhost:5000/restaurantes');
+   const [urlmarcas] = useState('http://localhost:5000/marcas');
+   
 
    const cambiarValor = (e) =>{
       const {name, value} = e.target;
@@ -21,6 +33,18 @@ const AddDesechables = () => {
          ...desechable,
          [name] : value
       })
+   }
+
+   const traerNombreRestaurante = async () => {
+      let res = await fetch(urlrestaurante)
+      .then(response => response.json())
+      SetRestaurantes(res);
+   }
+
+   const traerMarca = async () => {
+      let marca = await fetch(urlmarcas)
+      .then(response => response.json())
+      SetMarcas(marca);
    }
 
    const enviarDatos = async () =>{
@@ -34,11 +58,40 @@ const AddDesechables = () => {
       })
       .then(response => console.log(response))
       .catch(error => console.log(error))
+
+      var fecha = new Date();
+
+      var date = fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate();
+      var time = fecha.getHours() + ":" + fecha.getMinutes();
+
+      var horaFecha = date + " " + time
+
+      const bitacora = {
+         usuario:username.username,
+         fechaHora:horaFecha,
+         descripcion:"Agregó Desechables"
+      }
+
+      await fetch(urlbitacora, {
+         headers:{
+            Accept:"application/json",
+            "Content-type": "application/json"
+         },
+         method:"POST",
+         body: JSON.stringify(bitacora)
+      })
+      .then(response => response.json())
+      .catch(error => console.log(error))
    }
 
    const limpiarInputs = () => {
       document.getElementById("form").reset();
    }
+
+   useEffect(() => {
+      traerNombreRestaurante();
+      traerMarca();
+   },[])
 
    const interfaz = () => {
       return(
@@ -57,26 +110,31 @@ const AddDesechables = () => {
                         <form id="form" className="form_adddesechables" action=""> 
                            <label for="restaurante">
                               <h2>Restaurante</h2>
-                              <input list="restaurante" onChange={cambiarValor} name="restaurante"/>
-                              <datalist id="restaurante">
-                                 <option value="1. Restaurante"></option>
-                                 <option value="2. Restaurante"></option>
-                                 <option value="3. Restaurante"></option>
-                              </datalist>
-                           </label> 
+                              <select onChange={cambiarValor} name="restaurante" id="restaurante">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
+                                 {restaurantes.map(r => {
+                                       return <option defaultValue={r.nombre} value={r.nombre}>{r.nombre}</option> 
+                                 })}
+                              </select>
+                           </label>
                            <label for="nombre">
                               <h2>Nombre</h2>
                               <input type="text" id="nombre" onChange={cambiarValor} name="nombre"/>
-                           </label> 
+                           </label>
+
                            <label for="marca">
                               <h2>Marca</h2>
-                              <input list="marca" onChange={cambiarValor} name="marca"/>
-                              <datalist id="marca">
-                                 <option value="1. Marca"></option>
-                                 <option value="2. Marca"></option>
-                                 <option value="3. Marca"></option>
-                              </datalist>
-                           </label> 
+                              <select name="marca" onChange={cambiarValor} name="marca" id="marca">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
+                                 {marcas.map(m => {
+                                       return <option defaultValue={m.nombre} value={m.nombre}>{m.nombre}</option> 
+                                 })}
+                              </select>
+                           </label>
                            
                            <label for="cantidad">
                               <h2>Cantidad</h2>

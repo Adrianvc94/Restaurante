@@ -13,12 +13,26 @@ const Desechables = () => {
       descripcion:''
    });
 
+   const[consecutivo, setConsecutivo] = useState();
+
    const [url] = useState('http://localhost:5000/desechables');
+   
+   const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
 
    const traerDatosDesechables = async () => {
       let datos = await fetch(url)
       .then(response => response.json())
       setDesechables(datos);
+   }
+
+   const traerDatosConsecutivo = async () => {
+      let cons = await fetch(urlconsecutivo)
+      .then(response => response.json())
+
+      cons.map(c => {
+         if (c.prefijo == "DE" ) 
+            return setConsecutivo(c.prefijo);
+      })
    }
 
    const enviarDatos = () =>{
@@ -36,7 +50,12 @@ const Desechables = () => {
 
    useEffect(() => {
       traerDatosDesechables();
+      traerDatosConsecutivo();
    }, [])
+
+   const refreshPage = ()=>{
+      window.location.reload();
+   }
 
    
 
@@ -52,7 +71,7 @@ const Desechables = () => {
 
                   <div className="search-container_desechables">        
                      <div className="search-buttons-container_desechables">
-                        <button className="btnrefresh_desechables"><span></span></button>
+                        <button onClick={refreshPage} className="btnrefresh_desechables"><span></span></button>
                         <Link to="/productos" className="btnclose_desechables"><span></span></Link>
                         <button className="btnclear_desechables"><span></span></button>
                         <button className="btnsearch_desechables"><span></span></button>
@@ -93,7 +112,7 @@ const Desechables = () => {
 
                         {desechables.map(d => {
                            return <tr>
-                           <td>{d._id}</td>
+                           <td>{consecutivo}</td>
                            <td>{d.nombre}</td>
                            <td>{d.cantidad}</td>
                            <td>{d.restaurante}</td>

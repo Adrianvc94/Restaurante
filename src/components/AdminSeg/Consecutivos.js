@@ -75,21 +75,26 @@ const Consecutivos = () => {
             
                   <div className="info-container_consecutivo"> 
                      <table>
-                        <tr>
-                           <th>Tipo</th>
-                           <th>Descripcion</th>
-                           <th>Valor del Consecutivo</th>
-                           <th>Contiene Prefijo</th>
-                        </tr>
+                        <thead>
+                           <tr>
+                              <th>Tipo</th>
+                              <th>Descripcion</th>
+                              <th>Valor del Consecutivo</th>
+                              <th>Contiene Prefijo</th>
+                           </tr>
+                        </thead>
 
-                        {consecutivos.map(c => {
-                           return <tr>
-                           <td>{c.tipo}</td>
-                           <td>{c.descripcion}</td>
-                           <td>{c.valor}</td>
-                           <td>{c.prefijo}</td>
-                        </tr>
-                        })}
+                        <tbody>
+                           {consecutivos.map(c => {
+                              return <tr>
+                              <td>{c.tipo}</td>
+                              <td>{c.descripcion}</td>
+                              <td>{c.valor}</td>
+                              <td>{c.prefijo}</td>
+                           </tr>
+                           })}
+                        </tbody>
+                       
                      </table>
                   </div>
             

@@ -16,13 +16,25 @@ const Empleado = () => {
       nacionalidad:'',
       restaurante:''
    });
+   const[consecutivo, setConsecutivo] = useState();
 
    const [url] = useState('http://localhost:5000/empleados');
+   const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
 
    const traerDatosEmpleado = async () => {
       let datos = await fetch(url)
       .then(response => response.json())
       setEmpleados(datos);
+   }
+   
+   const traerDatosConsecutivo = async () => {
+      let cons = await fetch(urlconsecutivo)
+      .then(response => response.json())
+
+      cons.map(c => {
+         if (c.prefijo == "EMP" ) 
+            return setConsecutivo(c.prefijo);
+      })
    }
 
    const cambiarValor = (e) =>{
@@ -48,8 +60,12 @@ const Empleado = () => {
 
    useEffect(() => {
       traerDatosEmpleado();
+      traerDatosConsecutivo();
    }, [])
 
+   const refreshPage = ()=>{
+      window.location.reload();
+   }
    
 
    const interfaz = () => {
@@ -64,7 +80,7 @@ const Empleado = () => {
 
                   <div class="search-container_usuario">        
                      <div class="search-buttons-container_usuario">
-                        <button class="btnrefresh_usuario"><span></span></button>
+                        <button onClick={refreshPage} class="btnrefresh_usuario"><span></span></button>
                         <Link to="/administracion" class="btnclose_usuario"><span></span></Link>
                         <button class="btnclear_usuario"><span></span></button>
                         <button class="btnsearch_usuario"><span></span></button>
@@ -100,7 +116,7 @@ const Empleado = () => {
 
                         {empleados.map(e => {
                            return <tr>
-                           <td>{e._id}</td>
+                           <td>{consecutivo}</td>
                            <td>{e.cedula}</td>
                            <td>{e.nombre}</td>
                            <td>{e.primer_apellido}</td>

@@ -1,8 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import "../../Styles/AddEspecialidades.css";
 
+
+import {Username} from '../../Helper/Context';
+
 const AddEspecialidades = () => {
+
+   const {username, setUsername} = useContext(Username)
 
    const [especialidad, setEspecialidad] = useState({
       nombre:'',
@@ -12,6 +17,7 @@ const AddEspecialidades = () => {
    });
 
    const [url] = useState('http://localhost:5000/especialidades');
+   const [urlbitacora] = useState('http://localhost:5000/bitacora');
 
    const cambiarValor = (e) =>{
       const {name, value} = e.target;
@@ -29,6 +35,30 @@ const AddEspecialidades = () => {
          },
          method:"POST",
          body: JSON.stringify(especialidad)
+      })
+      .then(response => response.json())
+      .catch(error => console.log(error))
+
+      var fecha = new Date();
+
+      var date = fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate();
+      var time = fecha.getHours() + ":" + fecha.getMinutes();
+
+      var horaFecha = date + " " + time
+
+      const bitacora = {
+         usuario:username.username,
+         fechaHora:horaFecha,
+         descripcion:"Agregó Especialidad"
+      }
+
+      await fetch(urlbitacora, {
+         headers:{
+            Accept:"application/json",
+            "Content-type": "application/json"
+         },
+         method:"POST",
+         body: JSON.stringify(bitacora)
       })
       .then(response => response.json())
       .catch(error => console.log(error))
@@ -76,16 +106,10 @@ const AddEspecialidades = () => {
                            <button className="btnclear_addespecialidad" onClick={limpiarInputs}><span></span></button>
                            <button className="btnAdd_addespecialidad" onClick={enviarDatos}><span></span></button>
                            <Link to="/especialidades" className="btnclose_addespecialidad"><span></span></Link>
-                           <button className="btnImage_addespecialidad"><span></span></button>
                         </div>
                      </div>
 
-                     <div className="buffetImage_addespecialidad">
-                        <h2>Foto del Especial</h2>
-                        <picture>
-                           <img src="https://cdn.shopify.com/s/files/1/0899/2262/articles/restaurantes-de-mariscos-y-otras-opciones-para-comer-en-cuaresma.jpg?v=1552671997" alt=""/>
-                        </picture>
-                     </div>
+                  
                   
                   </div>     
             

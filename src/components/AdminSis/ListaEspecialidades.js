@@ -11,13 +11,25 @@ const ListaEspecialidades = () => {
       precio:'',
       detalle:''
    });
+   const[consecutivo, setConsecutivo] = useState();
 
    const [url] = useState('http://localhost:5000/especialidades');
+   const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
 
    const traerDatosEspecialidades = async () => {
       let datos = await fetch(url)
       .then(response => response.json())
       setEspecialidades(datos);
+   }
+
+   const traerDatosConsecutivo = async () => {
+      let cons = await fetch(urlconsecutivo)
+      .then(response => response.json())
+
+      cons.map(c => {
+         if (c.prefijo == "ESP" ) 
+            return setConsecutivo(c.prefijo);
+      })
    }
 
    const enviarDatos = () =>{
@@ -35,7 +47,12 @@ const ListaEspecialidades = () => {
 
    useEffect(() => {
       traerDatosEspecialidades();
+      traerDatosConsecutivo();
    }, [])
+
+   const refreshPage = ()=>{
+      window.location.reload();
+   }
 
 
    const interfaz = () => {
@@ -49,7 +66,7 @@ const ListaEspecialidades = () => {
 
                   <div className="search-container_especialidades">        
                      <div className="search-buttons-container_especialidades">
-                        <button className="btnrefresh_especialidades"><span></span></button>
+                        <button onClick={refreshPage} className="btnrefresh_especialidades"><span></span></button>
                         <Link to="/especiales" className="btnclose_especialidades"><span></span></Link>
                         <button className="btnclear_especialidades"><span></span></button>
                         <button className="btnsearch_especialidades"><span></span></button>
@@ -85,7 +102,7 @@ const ListaEspecialidades = () => {
 
                         {especialidades.map(e => {
                            return <tr>
-                           <td>{e._id}</td>
+                           <td>{consecutivo}</td>
                            <td>{e.nombre}</td>
                            <td>{e.ingredientes}</td>
                            <td>{e.precio}</td>

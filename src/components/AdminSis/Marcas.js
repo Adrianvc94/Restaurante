@@ -16,8 +16,10 @@ const Marcas = () => {
       telefono:'',
       foto_empresa:''
    });
+   const[consecutivo, setConsecutivo] = useState();
 
    const [url] = useState('http://localhost:5000/marcas');
+   const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
 
    const traerDatosMarcas = async () => {
       let datos = await fetch(url)
@@ -25,13 +27,23 @@ const Marcas = () => {
       setMarcas(datos);
    }
 
-   const cambiarValor = (e) =>{
-      const {name, value} = e.target;
-      setMarca({
-         ...marca,
-         [name] : value
+   const traerDatosConsecutivo = async () => {
+      let cons = await fetch(urlconsecutivo)
+      .then(response => response.json())
+
+      cons.map(c => {
+         if (c.prefijo == "M" ) 
+            return setConsecutivo(c.prefijo);
       })
    }
+
+   // const cambiarValor = (e) =>{
+   //    const {name, value} = e.target;
+   //    setMarca({
+   //       ...marca,
+   //       [name] : value
+   //    })
+   // }
 
    const enviarDatos = () =>{
       fetch(url, {
@@ -48,9 +60,13 @@ const Marcas = () => {
 
    useEffect(() => {
       traerDatosMarcas();
+      traerDatosConsecutivo();
    }, [])
 
-   
+   const refreshPage = ()=>{
+      window.location.reload();
+   }
+
 
    const interfaz = () => {
 
@@ -64,7 +80,7 @@ const Marcas = () => {
 
                   <div class="search-container_marcas">        
                      <div class="search-buttons-container_marcas">
-                        <button class="btnrefresh_marcas"><span></span></button>
+                        <button onClick={refreshPage} class="btnrefresh_marcas"><span></span></button>
                         <Link to="/proveedores" class="btnclose_marcas"><span></span></Link>
                         <button class="btnclear_marcas"><span></span></button>
                         <button class="btnsearch_marcas"><span></span></button>
@@ -111,7 +127,7 @@ const Marcas = () => {
 
                         {marcas.map(m => {
                            return <tr>
-                           <td>{m._id}</td>
+                           <td>{consecutivo}</td>
                            <td>{m.nombre}</td>
                            <td>{m.descripcion}</td>
                            <td>{m.nacionalidad}</td>

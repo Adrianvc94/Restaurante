@@ -1,8 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import '../../Styles/AddMarcas.css';
 
+
+import {Username} from '../../Helper/Context';
+
 const AddMarcas = () => {
+
+   const {username, setUsername} = useContext(Username)
 
    const [marca, setMarca] = useState({
       nombre:'',
@@ -14,7 +19,12 @@ const AddMarcas = () => {
       telefono:''
    });
 
+   
+   const [paises, SetPaises] = useState([]);
+
    const [url] = useState('http://localhost:5000/marcas');
+   const [urlbitacora] = useState('http://localhost:5000/bitacora');
+   const [urlpaises] = useState('http://localhost:5000/paises');
 
    const cambiarValor = (e) =>{
       const {name, value} = e.target;
@@ -22,6 +32,12 @@ const AddMarcas = () => {
          ...marca,
          [name] : value
       })
+   }
+
+   const traerPaises = async () => {
+      let pais = await fetch(urlpaises)
+      .then(response => response.json())
+      SetPaises(pais);
    }
 
    const enviarDatos = async () =>{
@@ -35,6 +51,30 @@ const AddMarcas = () => {
       })
       .then(response => response.json())
       .catch(error => console.log(error))
+
+      var fecha = new Date();
+
+      var date = fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate();
+      var time = fecha.getHours() + ":" + fecha.getMinutes();
+
+      var horaFecha = date + " " + time
+
+      const bitacora = {
+         usuario:username.username,
+         fechaHora:horaFecha,
+         descripcion:"Agregó Marca"
+      }
+
+      await fetch(urlbitacora, {
+         headers:{
+            Accept:"application/json",
+            "Content-type": "application/json"
+         },
+         method:"POST",
+         body: JSON.stringify(bitacora)
+      })
+      .then(response => response.json())
+      .catch(error => console.log(error))
    }
 
    const limpiarInputs = () => {
@@ -42,6 +82,9 @@ const AddMarcas = () => {
       document.getElementById("form2").reset();
    }
 
+   useEffect(() => {
+      traerPaises();
+   },[])
    
 
    const interfaz = () => {
@@ -64,19 +107,23 @@ const AddMarcas = () => {
                               <h2>Nombre</h2>
                               <input type="text" onChange={cambiarValor} name="nombre" id="nombre"/>
                            </label>  
+
                            <label for="nacionalidad">
                               <h2>Nacionalidad</h2>
-                              <input type="text" onChange={cambiarValor} name="nacionalidad" id="nacionalidad"/>
-                           </label>       
+                              <select onChange={cambiarValor} name="nacionalidad" id="nacionalidad">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
+                                 {paises.map(p => {
+                                       return <option defaultValue={p.nombre} value={p.nombre}>{p.nombre}</option> 
+                                 })}
+                              </select>
+                           </label>    
                         
                            <label for="descripcion">
                               <h2>Descripcion</h2>
                               <input type="text" onChange={cambiarValor} name="descripcion" id="descripcion"/>
                            </label>   
-                           {/* <label for="telefono_uno">
-                              <h2>Telefono 1</h2>
-                              <input type="text" onChange={cambiarValor} name="telefono_uno" id="telefono_uno"/>
-                           </label>   */}
                      
                         </form>
          

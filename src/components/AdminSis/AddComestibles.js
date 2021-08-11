@@ -1,10 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import "../../Styles/AddComestibles.css";
+
+import {Username} from '../../Helper/Context';
 
 const AddComestibles = () => {
 
    
+   const {username, setUsername} = useContext(Username)
+
    const [comestible, setComestible] = useState({
       nombre:'',
       cantidad:'',
@@ -16,7 +20,17 @@ const AddComestibles = () => {
       medida:''
    });
 
+   
+   const [restaurantes, SetRestaurantes] = useState([]);
+   const [marcas, SetMarcas] = useState([]);
+   const [medidas, SetMedidas] = useState([]);
+
    const [url] = useState('http://localhost:5000/comestibles');
+   const [urlbitacora] = useState('http://localhost:5000/bitacora');
+   
+   const [urlrestaurante] = useState('http://localhost:5000/restaurantes');
+   const [urlmarcas] = useState('http://localhost:5000/marcas');
+   const [urlmedidas] = useState('http://localhost:5000/medidas');
 
    const cambiarValor = (e) =>{
       const {name, value} = e.target;
@@ -24,6 +38,24 @@ const AddComestibles = () => {
          ...comestible,
          [name] : value
       })
+   }
+
+   const traerNombreRestaurante = async () => {
+      let res = await fetch(urlrestaurante)
+      .then(response => response.json())
+      SetRestaurantes(res);
+   }
+
+   const traerMarca = async () => {
+      let marca = await fetch(urlmarcas)
+      .then(response => response.json())
+      SetMarcas(marca);
+   }
+
+   const traerMedidas = async () => {
+      let unidad = await fetch(urlmedidas)
+      .then(response => response.json())
+      SetMedidas(unidad);
    }
 
    const enviarDatos = async () =>{
@@ -37,12 +69,42 @@ const AddComestibles = () => {
       })
       .then(response => console.log(response))
       .catch(error => console.log(error))
+
+      var fecha = new Date();
+
+      var date = fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate();
+      var time = fecha.getHours() + ":" + fecha.getMinutes();
+
+      var horaFecha = date + " " + time
+
+      const bitacora = {
+         usuario:username.username,
+         fechaHora:horaFecha,
+         descripcion:"Agregó Comestible"
+      }
+
+      await fetch(urlbitacora, {
+         headers:{
+            Accept:"application/json",
+            "Content-type": "application/json"
+         },
+         method:"POST",
+         body: JSON.stringify(bitacora)
+      })
+      .then(response => response.json())
+      .catch(error => console.log(error))
    }
 
    const limpiarInputs = () => {
       document.getElementById("form").reset();
       document.getElementById("form2").reset();
    }
+
+   useEffect(() => {
+      traerNombreRestaurante();
+      traerMarca();
+      traerMedidas();
+   },[])
 
    const interfaz = () => {
       return(
@@ -69,22 +131,31 @@ const AddComestibles = () => {
                            </label>     
                            <label for="tipo">
                               <h2>Tipo de Comestible</h2>
-                              <input list="tipo" onChange={cambiarValor} name="tipo"/>
-                              <datalist id="tipo">
-                                 <option value="1. Comestible"></option>
-                                 <option value="2. Comestible"></option>
-                                 <option value="3. Comestible"></option>
-                              </datalist>
+                              <select onChange={cambiarValor} name="tipo" id="tipo">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
+                                 <option value="Frutas">Frutas</option>
+                                 <option value="Cacao">Cacao</option>
+                                 <option value="Carnes">Carnes</option>
+                                 <option value="Aceites">Aceites</option>
+                                 <option value="Cereales">Cereales</option>
+                                 <option value="Vegetales">Vegetales</option>
+                                 <option value="Legumbres">Legumbres</option>
+                                 <option value="Frutos Secos">Frutos Secos</option>
+                              </select>
                            </label> 
                            <label for="restaurante">
                               <h2>Restaurante</h2>
-                              <input list="restaurante" onChange={cambiarValor} name="restaurante"/>
-                              <datalist id="restaurante">
-                                 <option value="1. Restaurante"></option>
-                                 <option value="2. Restaurante"></option>
-                                 <option value="3. Restaurante"></option>
-                              </datalist>
-                           </label>   
+                              <select onChange={cambiarValor} name="restaurante" id="restaurante">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
+                                 {restaurantes.map(r => {
+                                       return <option defaultValue={r.nombre} value={r.nombre}>{r.nombre}</option> 
+                                 })}
+                              </select>
+                           </label>
                                           
                         </form>
 
@@ -100,40 +171,51 @@ const AddComestibles = () => {
                            
                            <label for="marca">
                               <h2>Marca</h2>
-                              <input list="marca" onChange={cambiarValor} name="marca"/>
-                              <datalist id="marca">
-                                 <option value="1. Marca"></option>
-                                 <option value="2. Marca"></option>
-                                 <option value="3. Marca"></option>
-                              </datalist>
-                           </label> 
+                              <select name="marca" onChange={cambiarValor} name="marca" id="marca">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
+                                 {marcas.map(m => {
+                                       return <option defaultValue={m.nombre} value={m.nombre}>{m.nombre}</option> 
+                                 })}
+                              </select>
+                           </label>
                            <label for="clase">
                               <h2>Clase de Comestible</h2>
-                              <input list="clase" onChange={cambiarValor} name="clase"/>
-                              <datalist id="clase">
-                                 <option value="1. clase"></option>
-                                 <option value="2. clase"></option>
-                                 <option value="3. clase"></option>
-                              </datalist>
+                              <select onChange={cambiarValor} name="clase" id="clase">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
+                                 <option value="Fibra">Fibra</option>
+                                 <option value="Grasas">Grasas</option>
+                                 <option value="Proteinas">Proteinas</option>
+                                 <option value="Vitaminas">Vitaminas</option>
+                                 <option value="Minerales">Minerales</option>
+                                 <option value="Carbohidratos">Carbohidratos</option>
+                              </select>
                            </label> 
                            <label for="linea">
                               <h2>Linea de Comestible</h2>
-                              <input list="linea" onChange={cambiarValor} name="linea"/>
-                              <datalist id="linea">
-                                 <option value="1. linea"></option>
-                                 <option value="2. linea"></option>
-                                 <option value="3. linea"></option>
-                              </datalist>
+                              <select onChange={cambiarValor} name="linea" id="linea">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
+                                 <option value="Secos">Secos</option>
+                                 <option value="Congelados">Congelados</option>
+                                 <option value="Refrigerados">Refrigerados</option>
+                              </select>
                            </label> 
                            <label for="medida">
-                              <h2>Unidad de Medida</h2>
-                              <input list="medida" onChange={cambiarValor} name="medida"/>
-                              <datalist id="medida">
-                                 <option value="1. medida"></option>
-                                 <option value="2. medida"></option>
-                                 <option value="3. medida"></option>
-                              </datalist>
-                           </label> 
+                              <h2>Medida</h2>
+                              <select onChange={cambiarValor} name="medida" id="medida">
+                                 <option value="none" selected disabled hidden>
+                                    Eliga una opción
+                                 </option>
+                                 {medidas.map(m => {
+                                       return <option defaultValue={m.unidad} value={m.unidad}>{m.unidad}</option> 
+                                 })}
+                              </select>
+                           </label>
                         </form>
                
                      </div>

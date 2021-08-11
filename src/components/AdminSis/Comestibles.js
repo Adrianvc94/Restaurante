@@ -15,13 +15,26 @@ const Comestible = () => {
       linea:'',
       medida:''
    });
+   
+   const[consecutivo, setConsecutivo] = useState();
 
    const [url] = useState('http://localhost:5000/comestibles');
+   const [urlconsecutivo] = useState('http://localhost:5000/consecutivos');
 
    const traerDatosComestible = async () => {
       let datos = await fetch(url)
       .then(response => response.json())
       setComestibles(datos);
+   }
+
+   const traerDatosConsecutivo = async () => {
+      let cons = await fetch(urlconsecutivo)
+      .then(response => response.json())
+
+      cons.map(c => {
+         if (c.prefijo == "COM" ) 
+            return setConsecutivo(c.prefijo);
+      })
    }
 
    const enviarDatos = () =>{
@@ -39,7 +52,12 @@ const Comestible = () => {
 
    useEffect(() => {
       traerDatosComestible();
+      traerDatosConsecutivo();
    }, [])
+
+   const refreshPage = ()=>{
+      window.location.reload();
+   }
 
 
    const interfaz = () => {
@@ -54,7 +72,7 @@ const Comestible = () => {
 
                   <div className="search-container_comestibles">        
                      <div className="search-buttons-container_comestibles">
-                        <button className="btnrefresh_comestibles"><span></span></button>
+                        <button onClick={refreshPage} className="btnrefresh_comestibles"><span></span></button>
                         <Link to="/productos" className="btnclose_comestibles"><span></span></Link>
                         <button className="btnclear_comestibles"><span></span></button>
                         <button className="btnsearch_comestibles"><span></span></button>
@@ -95,7 +113,7 @@ const Comestible = () => {
 
                         {comestibles.map(c => {
                            return <tr>
-                           <td>{c._id}</td>
+                           <td>{consecutivo}</td>
                            <td>{c.nombre}</td>
                            <td>{c.cantidad}</td>
                            <td>{c.restaurante}</td>

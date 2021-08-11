@@ -67,6 +67,7 @@ import AddLicores from './components/AdminSis/AddLicores';
 
 import {Username} from './Helper/Context';
 import { useState } from 'react';
+import ReportesSeg from './components/AdminSeg/ReportesSeg';
 
 function App() {
 
@@ -470,6 +471,12 @@ function App() {
         <Route path="/addmarcas" exact>
           <Username.Provider value={{username, setUsername}}>
             <AddMarcas/>
+          </Username.Provider> 
+        </Route>
+
+        <Route path="/reportesseg" exact>
+          <Username.Provider value={{username, setUsername}}>
+            <ReportesSeg/>
           </Username.Provider> 
         </Route>
 

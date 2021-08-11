@@ -32,33 +32,11 @@ const MainPageSeg = () => {
                         <img className="card-image_MainPageSeg" src={securityIcon} alt=""/>
                      </Link>
 
-                     {/* Solo puede acceder a los reportes de los clientes */}
-                     <Link to="/reportes" className="card_MainPageSeg">                  
+                     {/* Solo puede acceder a la bitacora */}
+                     <Link to="/reportesseg" className="card_MainPageSeg">                  
                         <h2 className="card-title_MainPageSeg">Reportes</h2>
                         <img className="card-image_MainPageSeg" src={reportIcon} alt=""/>      
                      </Link>  
-
-                     {/* <Link to="/listarestaurante" classNameName="card_MainPageSeg">                  
-                        <h2 className="card-title_MainPageSeg">Restaurantes</h2>
-                        <img className="card-image_MainPageSeg" src={restaurantIcon} alt=""/>                     
-                     </Link> */}
-
-                     {/* <Link to="/login" classNameName="card_MainPageSeg">                  
-                        <h2 className="card-title_MainPageSeg">Clientes</h2>
-                        <img className="card-image_MainPageSeg" src={clientLogo} alt=""/>                 
-                     </Link> */}
-
-                     {/* <Link to="/proveedores" classNameName="card_MainPageSeg">                  
-                        <h2 className="card-title_MainPageSeg">Proveedores</h2>
-                        <img className="card-image_MainPageSeg" src={proveedorIcon} alt=""/>              
-                     </Link> */}
-
-                     {/* <Link to="/administracion" classNameName="card_MainPageSeg">                  
-                        <h2 className="card-title_MainPageSeg">Administración</h2>
-                        <img className="card-image_MainPageSeg" src={adminIcon} alt=""/>        
-                     </Link> */}
-
-                       
                   
                   </div>      
                </div>        

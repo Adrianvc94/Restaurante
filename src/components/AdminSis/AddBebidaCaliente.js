@@ -38,18 +38,16 @@ const AddBebidaCaliente = () => {
    }
 
    const enviarDatos = async () =>{
-      // await fetch(url, {
-      //    headers:{
-      //       Accept:"application/json",
-      //       "Content-type": "application/json"
-      //    },
-      //    method:"POST",
-      //    body: JSON.stringify(bebidaCaliente)
-      // })
-      // .then(response => response.json())
-      // .catch(error => console.log(error))
-
-      console.log(username.username);
+      await fetch(url, {
+         headers:{
+            Accept:"application/json",
+            "Content-type": "application/json"
+         },
+         method:"POST",
+         body: JSON.stringify(bebidaCaliente)
+      })
+      .then(response => response.json())
+      .catch(error => console.log(error))
 
       var fecha = new Date();
 

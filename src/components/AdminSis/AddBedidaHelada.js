@@ -1,10 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import "../../Styles/AddBebidaHelada.css";
+
+import {Username} from '../../Helper/Context';
 
 const AddBebidaHelada = () => {
 
    
+   const {username, setUsername} = useContext(Username)
+
+   console.log(username);
+
    const [bebidaHelada, setBebidaHelada] = useState({
       nombre:'',
       marca:'',
@@ -17,6 +23,7 @@ const AddBebidaHelada = () => {
 
    const [url] = useState('http://localhost:5000/bebidahelada');
    const [urlrestaurante] = useState('http://localhost:5000/restaurantes');
+   const [urlbitacora] = useState('http://localhost:5000/bitacora');
 
    const cambiarValor = (e) =>{
       const {name, value} = e.target;
@@ -33,16 +40,41 @@ const AddBebidaHelada = () => {
    }
 
    const enviarDatos = async () =>{
-      await fetch(url, {
+      // await fetch(url, {
+      //    headers:{
+      //       Accept:"application/json",
+      //       "Content-type": "application/json"
+      //    },
+      //    method:"POST",
+      //    body: JSON.stringify(bebidaHelada)
+      // })
+      // .then(response => response.json())
+      // .catch(error => console.log(error))
+
+      var fecha = new Date();
+
+      var date = fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate();
+      var time = fecha.getHours() + ":" + fecha.getMinutes();
+
+      var horaFecha = date + " " + time
+
+      const bitacora = {
+         usuario:username.username,
+         fechaHora:horaFecha,
+         descripcion:"Agregó Bebida Helada"
+      }
+
+      await fetch(urlbitacora, {
          headers:{
             Accept:"application/json",
             "Content-type": "application/json"
          },
          method:"POST",
-         body: JSON.stringify(bebidaHelada)
+         body: JSON.stringify(bitacora)
       })
       .then(response => response.json())
       .catch(error => console.log(error))
+
    }
 
    const limpiarInputs = () => {

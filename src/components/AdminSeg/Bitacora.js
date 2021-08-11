@@ -106,6 +106,7 @@ const Bitacora = () => {
                      <div className="add-delete-buttons_bitacora">
                         <button className="btnAdd_bitacora"><span></span></button>
                         <button className="btnDelete_bitacora"><span></span></button>
+                        <Link to="/reportesseg" className="btnback_bitacora"><span></span></Link>
                      </div>
                   </div>
             

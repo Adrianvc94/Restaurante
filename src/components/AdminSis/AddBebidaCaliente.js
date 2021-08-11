@@ -1,8 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import { Link } from 'react-router-dom';
 import "../../Styles/AddBebidaCaliente.css";
 
+import {Username} from '../../Helper/Context';
+
 const AddBebidaCaliente = () => {
+
+   const {username, setUsername} = useContext(Username)
 
    
    const [bebidaCaliente, setBebidaCaliente] = useState({
@@ -17,6 +21,7 @@ const AddBebidaCaliente = () => {
 
    const [url] = useState('http://localhost:5000/bebidacaliente');
    const [urlrestaurante] = useState('http://localhost:5000/restaurantes');
+   const [urlbitacora] = useState('http://localhost:5000/bitacora');
 
    const cambiarValor = (e) =>{
       const {name, value} = e.target;
@@ -33,13 +38,39 @@ const AddBebidaCaliente = () => {
    }
 
    const enviarDatos = async () =>{
-      await fetch(url, {
+      // await fetch(url, {
+      //    headers:{
+      //       Accept:"application/json",
+      //       "Content-type": "application/json"
+      //    },
+      //    method:"POST",
+      //    body: JSON.stringify(bebidaCaliente)
+      // })
+      // .then(response => response.json())
+      // .catch(error => console.log(error))
+
+      console.log(username.username);
+
+      var fecha = new Date();
+
+      var date = fecha.getFullYear()+'-'+(fecha.getMonth()+1)+'-'+fecha.getDate();
+      var time = fecha.getHours() + ":" + fecha.getMinutes();
+
+      var horaFecha = date + " " + time
+
+      const bitacora = {
+         usuario:username.username,
+         fechaHora:horaFecha,
+         descripcion:"Agregó Bebida Caliente"
+      }
+
+      await fetch(urlbitacora, {
          headers:{
             Accept:"application/json",
             "Content-type": "application/json"
          },
          method:"POST",
-         body: JSON.stringify(bebidaCaliente)
+         body: JSON.stringify(bitacora)
       })
       .then(response => response.json())
       .catch(error => console.log(error))

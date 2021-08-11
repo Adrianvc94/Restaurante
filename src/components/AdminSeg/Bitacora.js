@@ -26,7 +26,7 @@ const Bitacora = () => {
       .then(response => response.json())
 
       cons.map(c => {
-         if (c.prefijo == "BT" ) 
+         if (c.prefijo == "BIT" ) 
             return setConsecutivo(c.prefijo);
       })
    }
@@ -114,7 +114,7 @@ const Bitacora = () => {
                         <thead>
                            <tr>
                               <th>Codigo</th>
-                              <th>Usario</th>
+                              <th>Usuario</th>
                               <th>Fecha y Hora</th>
                               <th>Descripcion</th>
                            </tr>
@@ -124,7 +124,7 @@ const Bitacora = () => {
                            {bitacoras.map(b => {
                               return <tr>
                               <td>{consecutivo}</td>
-                              <td>{b.usuario}</td>
+                              <td>{b.usuario.username}</td>
                               <td>{b.fechaHora}</td>
                               <td>{b.descripcion}</td>
                            </tr>

@@ -17,9 +17,9 @@ const MainPageSis = () => {
 
    const {username, setUsername} = useContext(Username)
 
-   // console.log(username);
+   console.log(username);
 
-      const interfaz = () => {
+   const interfaz = () => {
       return(
          <body>
       

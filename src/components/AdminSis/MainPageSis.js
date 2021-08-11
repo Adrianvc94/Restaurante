@@ -1,8 +1,7 @@
 import "../../Styles/MainPageSis.css";
 import { Link } from "react-router-dom";
+import React, {useContext} from 'react';
 
-/////// Images
-// import securityIcon from '../../Images';
 import restaurantIcon from '../../Images/restaurantIcon.svg';
 import clientLogo from '../../Images/clientLogo.svg';
 import proveedorIcon from '../../Images/proveedorIcon.svg';
@@ -12,7 +11,13 @@ import reportIcon from '../../Images/reportIcon.svg';
 import logoutIcon from '../../Images/logout_icon.svg';
 import helpIcon from '../../Images/help_icon.svg';
 
+import {Username} from '../../Helper/Context';
+
 const MainPageSis = () => {
+
+   const {username, setUsername} = useContext(Username)
+
+   // console.log(username);
 
       const interfaz = () => {
       return(
@@ -25,7 +30,7 @@ const MainPageSis = () => {
                   <div className="tittle-buttons_MainPageSis">
                      <h1 className="main-title_MainPageSis">Administración Central de los Restaurantes</h1>
                      <Link to="/ayudasistemasis" className="btnhelp_MainPageSis"><img src={helpIcon} alt=""/></Link>
-                     <Link to="/login" className="btnlogout_MainPageSis"><img src={logoutIcon} alt=""/></Link>
+                     <Link to="/login" onClick={() => setUsername({})} className="btnlogout_MainPageSis"><img src={logoutIcon} alt=""/></Link>
                   </div>
 
                   <div className="cards-container_MainPageSis">

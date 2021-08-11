@@ -30,8 +30,6 @@ import AddTecnologia from './components/AdminSis/AddTecnologia';
 import Utensilios from './components/AdminSis/Utensilios';
 import AddUtensilios from './components/AdminSis/AddUtensilios';
 import ListaProveedores from './components/AdminSis/ListaProveedores';
-
-// Esto se tiene que cambiar para que sean empleados
 import Empleado from './components/AdminSis/Empleado';
 import AddEmpleado from './components/AdminSis/AddEmpleado';
 
@@ -66,95 +64,153 @@ import AddGaseosa from './components/AdminSis/AddGaseosa';
 import Licores from './components/AdminSis/Licores';
 import AddLicores from './components/AdminSis/AddLicores';
 
+
+import {Username} from './Helper/Context';
+import { useState } from 'react';
+
 function App() {
+
+  const [username, setUsername] = useState({});
+
   return (
+ 
     <Router>
 
+      {/* <Switch>
+        <Username.Provider value={{username, setUsername}}>
+        
+          <Route path="/" component={Login} exact></Route>
+
+          <Route path="/login" component={Login} exact></Route>
+          
+          <Route path="/mainpagesis" component={MainPageSis} exact></Route>     
+
+        </Username.Provider>
+      
+      </Switch> */}
+
       <Switch>
-      <Route path="/" exact>    
-          <Login/>
+        <Route path="/" exact>   
+          <Username.Provider value={{username, setUsername}}>
+            <Login/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/login" exact>    
-          <Login/>
+          <Username.Provider value={{username, setUsername}}>
+            <Login/>
+          </Username.Provider> 
         </Route>
 
         
-
-       
-
         {/* Admin Sistemas */}
-        <Route path="/mainpagesis" exact>
-          <MainPageSis/>
+        <Route path="/mainpagesis" exact>   
+            <Username.Provider value={{username, setUsername}}>
+            <MainPageSis/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/listarestaurante" exact>
-          <ListaRestaurante/>
+          <Username.Provider value={{username, setUsername}}>
+            <ListaRestaurante/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addrestaurante" exact>
-          <AddRestaurante/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddRestaurante/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/administracion" exact>
-          <Administracion/>
+          <Username.Provider value={{username, setUsername}}>
+            <Administracion/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/especiales" exact>
-          <Especiales/>
+          <Username.Provider value={{username, setUsername}}>
+            <Especiales/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/buffet" exact>
-          <Buffet/>
+          <Username.Provider value={{username, setUsername}}>
+            <Buffet/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addbuffet" exact>
-          <AddBuffet/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddBuffet/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/tiposbebidas" exact>
-          <TiposBebidas/>
+          <Username.Provider value={{username, setUsername}}>
+            <TiposBebidas/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/bebidascalientes" exact>
-          <BebidaCaliente/>
+          <Username.Provider value={{username, setUsername}}>
+            <BebidaCaliente/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addbebidascalientes" exact>
-          <AddBebidaCaliente/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddBebidaCaliente/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/bebidasheladas" exact>
-          <BebidaHelada/>
+          <Username.Provider value={{username, setUsername}}>
+            <BebidaHelada/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addbebidasheladas" exact>
-          <AddBebidaHelada/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddBebidaHelada/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/vinos" exact>
-          <Vinos/>
+          <Username.Provider value={{username, setUsername}}>
+            <Vinos/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addvinos" exact>
-          <AddVinos/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddVinos/>
+          </Username.Provider> 
         </Route>
 
         
         <Route path="/gaseosa" exact>
-          <Gaseosa/>
+          <Username.Provider value={{username, setUsername}}>
+            <Gaseosa/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addgaseosa" exact>
-          <AddGaseosa/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddGaseosa/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/licores" exact>
-          <Licores/>
+          <Username.Provider value={{username, setUsername}}>
+            <Licores/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addlicores" exact>
-          <AddLicores/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddLicores/>
+          </Username.Provider> 
         </Route>
 
 
@@ -163,103 +219,153 @@ function App() {
 
 
         <Route path="/especialidades" exact>
-          <ListaEspecialidades/>
+          <Username.Provider value={{username, setUsername}}>
+            <ListaEspecialidades/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addespecialidades" exact>
-          <AddEspecialidades/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddEspecialidades/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/puestos" exact>
-          <Puestos/>
+          <Username.Provider value={{username, setUsername}}>
+            <Puestos/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addpuestos" exact>
-          <AddPuestos/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddPuestos/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/mesas" exact>
-          <Mesas/>
+          <Username.Provider value={{username, setUsername}}>
+            <Mesas/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addmesas" exact>
-          <AddMesas/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddMesas/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/empleados" exact>
-          <Empleado/>
+          <Username.Provider value={{username, setUsername}}>
+            <Empleado/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addempleados" exact>
-          <AddEmpleado/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddEmpleado/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/proveedores" exact>
-          <Proveedores/>
+          <Username.Provider value={{username, setUsername}}>
+            <Proveedores/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/marcas" exact>
-          <Marcas/>
+          <Username.Provider value={{username, setUsername}}>
+            <Marcas/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/productos" exact>
-          <Productos/>
+          <Username.Provider value={{username, setUsername}}>
+            <Productos/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/comestibles" exact>
-          <Comestible/>
+          <Username.Provider value={{username, setUsername}}>
+            <Comestible/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addcomestibles" exact>
-          <AddComestibles/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddComestibles/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/desechables" exact>
-          <Desechables/>
+          <Username.Provider value={{username, setUsername}}>
+            <Desechables/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/adddesechables" exact>
-          <AddDesechables/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddDesechables/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/limpieza" exact>
-          <Limpieza/>
+          <Username.Provider value={{username, setUsername}}>
+            <Limpieza/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/tecnologia" exact>
-          <Tecnologia/>
+          <Username.Provider value={{username, setUsername}}>
+            <Tecnologia/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addtecnologia" exact>
-          <AddTecnologia/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddTecnologia/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/utensilios" exact>
-          <Utensilios/>
+          <Username.Provider value={{username, setUsername}}>
+            <Utensilios/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addutensilios" exact>
-          <AddUtensilios/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddUtensilios/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/listaproveedores" exact>
-          <ListaProveedores/>
+          <Username.Provider value={{username, setUsername}}>
+            <ListaProveedores/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/clientes" exact>
-          <Clientes/>
+          <Username.Provider value={{username, setUsername}}>
+            <Clientes/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/ayudasistemasis" exact>
-          <AyudaSistemaSis/>
+          <Username.Provider value={{username, setUsername}}>
+            <AyudaSistemaSis/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/ayudaseguridadsis" exact>
-          <AyudaSeguridadSis/>
+          <Username.Provider value={{username, setUsername}}>
+            <AyudaSeguridadSis/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addlimpieza" exact>
-          <AddLimpieza/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddLimpieza/>
+          </Username.Provider> 
         </Route>
 
 
@@ -272,67 +378,99 @@ function App() {
         {/* Admin Seguridad */}
 
         <Route path="/mainpageseg" exact>
-          <MainPageSeg/>
+          <Username.Provider value={{username, setUsername}}>
+            <MainPageSeg/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/seguridad" exact>
-          <Seguridad/>
+          <Username.Provider value={{username, setUsername}}>
+            <Seguridad/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/usuarios" exact>
-          <Usuario/>
+          <Username.Provider value={{username, setUsername}}>
+            <Usuario/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/consecutivos" exact>
-          <Consecutivos/>
+          <Username.Provider value={{username, setUsername}}>
+            <Consecutivos/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addconsecutivos" exact>
-          <AddConsecutivos/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddConsecutivos/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/paises" exact>
-          <Paises/>
+          <Username.Provider value={{username, setUsername}}>
+            <Paises/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addpaises" exact>
-          <AddPaises/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddPaises/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/roles" exact>
-          <Roles/>
+          <Username.Provider value={{username, setUsername}}>
+            <Roles/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addroles" exact>
-          <AddRoles/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddRoles/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/cajas" exact>
-          <Cajas/>
+          <Username.Provider value={{username, setUsername}}>
+            <Cajas/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/medidas" exact>
-          <Medidas/>
+          <Username.Provider value={{username, setUsername}}>
+            <Medidas/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addmedidas" exact>
-          <AddMedidas/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddMedidas/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addusuarios" exact>
-          <AddUsuario/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddUsuario/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/ayudaseguridadseg" exact>
-          <AyudaSeguridadSeg/>
+          <Username.Provider value={{username, setUsername}}>
+            <AyudaSeguridadSeg/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/ayudasistemaseg" exact>
-          <AyudaSistemaSeg/>
+          <Username.Provider value={{username, setUsername}}>
+            <AyudaSistemaSeg/>
+          </Username.Provider> 
         </Route>
 
         <Route path="/addmarcas" exact>
-          <AddMarcas/>
+          <Username.Provider value={{username, setUsername}}>
+            <AddMarcas/>
+          </Username.Provider> 
         </Route>
 
 
@@ -343,7 +481,10 @@ function App() {
 
       </Switch>
 
+
     </Router>
+
+
   );
 }
 

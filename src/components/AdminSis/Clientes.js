@@ -77,7 +77,7 @@ const Clientes = () => {
                         <button className="btnDelete_clientes"><span></span></button>
                      </div>
                   </div>
-            
+         
                   <div className="info-container_clientes"> 
                      <table>
                         <tr>

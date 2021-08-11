@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import '../../Styles/ListaRestaurante.css';
-// import 'bootstrap/dist/css/bootstrap.css';
 
 const ListaRestaurante = () => {
 

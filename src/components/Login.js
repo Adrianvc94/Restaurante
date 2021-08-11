@@ -1,9 +1,16 @@
 
-import React, {useState, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import '../Styles/Login.css';
 
+import {Username} from '../Helper/Context';
+
+
 const Login = () => {
+
+
+   const {username, setUsername} = useContext(Username)
+
 
    // const [puestos, setPuestos] = useState([]);
    const [role, setRole] = useState({
@@ -30,6 +37,8 @@ const Login = () => {
       })
    }
 
+   var i = 0;
+
    const enviarDatos = async () =>{
       let rol = await fetch(url, {
          headers:{
@@ -40,9 +49,12 @@ const Login = () => {
          body: JSON.stringify(login)
       })
       .then(response => response.json())
-      .catch(error => console.log(error))
-      setRole(rol)
-      console.log(role);
+      .catch(error => console.log(error))  
+      setUsername(rol)
+      // if(i === 1){
+      //    setRole(rol)
+      // }
+      // i++;
    }
 
    const limpiarInputs = () => {
@@ -73,7 +85,9 @@ const Login = () => {
                            </label>         
                         </form>
       
-                        <button className="btnLogin_login" onClick={enviarDatos}>Iniciar Sesion</button>
+                        <button className="btnLogin_login" onClick={enviarDatos}>Iniciar Sesion </button>
+
+
                         <button className="btnCancel_login" onClick={limpiarInputs}>Cancelar</button>
       
                      </section>
@@ -91,9 +105,9 @@ const Login = () => {
    }
 
    const validar = () => {
-      if(role.privilegios === "sistema"){
+      if(username.privilegios === "sistema"){
          return <Redirect to="/mainpagesis" />
-      }else if(role.privilegios === "seguridad"){
+      }else if(username.privilegios === "seguridad"){
          return <Redirect to="/mainpageseg" />
       }
    }
